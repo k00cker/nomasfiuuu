@@ -17,13 +17,24 @@ import {
   MapPin,
   Lock,
   Award,
-  AlertCircle
+  AlertCircle,
+  Landmark,
+  TrendingUp,
+  Search,
+  Timer,
+  ClipboardCheck,
+  Clock,
+  Users,
+  Shield,
+  AlertTriangle,
+  Bell
 } from "lucide-react";
 import Logo from "@/components/Logo";
 
 // Types
 interface Article {
   id: number;
+  slug: string;
   title: string;
   excerpt: string;
   date: string;
@@ -143,44 +154,49 @@ export default function Home() {
   const articles: Article[] = [
     {
       id: 1,
-      title: "¿Cuándo prescribe legalmente una deuda del FSCU? El plazo de los 5 años.",
-      excerpt: "Conoce el fundamento legal que permite extinguir la cobranza del Fondo Solidario si la universidad no ha demandado judicialmente a tiempo.",
-      date: "12 de Junio, 2026",
-      readTime: "5 min de lectura",
-      category: "Prescripción",
+      slug: "retencion-tgr-fondo-solidario-mitos-verdades",
+      title: "Retención de la Tesorería (TGR) por Fondo Solidario: Mitos y Verdades",
+      excerpt: "La TGR retiene devoluciones de impuestos por deudas del FSCU, pero eso no significa que la deuda sea vigente ni que se hayan perdido defensas legales.",
+      date: "15 de Junio, 2026",
+      readTime: "4 min de lectura",
+      category: "TGR e Impuestos",
       content: [
-        "El Fondo Solidario de Crédito Universitario (FSCU) es una de las deudas estudiantiles más comunes en Chile. Muchos exalumnos arrastran este saldo durante años bajo un estrés financiero constante. Sin embargo, la ley chilena establece plazos de caducidad para el cobro de estas obligaciones civiles.",
-        "De acuerdo con las reglas generales de nuestro Código Civil (Artículo 2515) y la normativa aplicable a pagarés firmados para respaldar estas deudas, las acciones de cobro ordinario prescriben por el transcurso de 5 años contados desde que la obligación se hizo exigible.",
-        "Esto significa que si la universidad o el administrador del fondo no ha interpuesto una demanda judicial de cobro válidamente notificada dentro del plazo de 5 años desde que venció la respectiva cuota o desde que se declaró la aceleración del saldo, el deudor tiene derecho a solicitar la Prescripción de la Deuda.",
-        "Es muy importante recalcar que la prescripción no opera automáticamente. Debe ser declarada por los tribunales ordinarios de justicia mediante una demanda de prescripción (vía acción) o como una excepción legal dentro del juicio en caso de ser demandado. Una vez declarada por un juez, la deuda se extingue legalmente y se borra de los registros de morosidad, devolviendo la tranquilidad financiera al exalumno."
+        "Cada año, muchas personas se dan cuenta que en la Operación Renta, su devolución de impuestos fue retenida por la Tesorería General de la República (TGR) debido a una deuda del Fondo Solidario de Crédito Universitario (FSCU). La reacción habitual es —además de la frustración del momento— pensar que la deuda se encuentra vigente y que ya no existe ninguna posibilidad de terminar con esta situación.",
+        "La TGR actúa como un mecanismo de recuperación, reteniendo las devoluciones de impuestos sobre la base de la información proporcionada por las instituciones acreedoras del Fondo Solidario. Esa retención constituye un abono a la deuda, pero no convierte a la Tesorería en acreedora ni significa, por sí sola, que el deudor haya perdido las posibilidades de defenderse.",
+        "Asimismo, la legislación no contempla la retención tributaria que realiza TGR como un acto de interrupción de la prescripción. En cambio, cada situación debe revisarse caso a caso.",
+        "Por ello, la sola circunstancia de haber sufrido una retención de impuestos no permite concluir que la deuda sea inexigible ni, por el contrario, que la posibilidad de alegar prescripción se haya perdido."
       ]
     },
     {
       id: 2,
-      title: "Qué hacer si recibes una demanda de cobranza de tu universidad.",
-      excerpt: "Si te notificaron judicialmente por deuda de Fondo Solidario, los plazos corren rápido. Conoce la estrategia clave para defender tu patrimonio.",
+      slug: "vendieron-mi-deuda-fondo-solidario",
+      title: "¿Vendieron mi deuda del Fondo Solidario? Lo que debes saber antes de asumir que todo está perdido",
+      excerpt: "Las universidades pueden vender o ceder la administración de carteras de deudores a terceros. Eso no hace la deuda imprescriptible ni elimina las defensas.",
       date: "28 de Mayo, 2026",
-      readTime: "6 min de lectura",
-      category: "Defensa Judicial",
+      readTime: "5 min de lectura",
+      category: "Administración",
       content: [
-        "Recibir la visita de un receptor judicial notificando una demanda por cobro del Fondo Solidario puede ser una experiencia sumamente estresante. No obstante, el peor error en esta instancia es no hacer nada. El silencio en el proceso judicial equivale a aceptar la ejecución del embargo y posterior remate de bienes.",
-        "Una vez notificada la demanda, el deudor cuenta con un plazo legal estricto de solo 8 días hábiles (u 4 días, según las circunstancias del juicio ejecutivo) para presentar formalmente sus excepciones o defensas legales a través del patrocinio de un abogado habilitado.",
-        "La defensa especializada consiste en analizar el expediente para determinar si se han cumplido los requisitos formales de la notificación, verificar si las firmas o pagarés están debidamente autenticados, y de manera crucial, alegar la Prescripción de la Deuda si ya transcurrieron los plazos de 5 años sin cobro.",
-        "En GMEC Abogados implementamos defensas estructuradas que paralizan el proceso ejecutivo de cobro, protegen tu domicilio y pertenencias de un eventual embargo, y buscan archivar definitivamente la causa por vencimiento de los plazos de cobro judicial."
+        "Muchos deudores del Fondo Solidario de Crédito Universitario se sorprenden al recibir llamados, correos electrónicos o notificaciones vía carta certificada de entidades distintas a la universidad en la que estudiaron. La primera reacción suele ser de desconcierto: \"¿Cómo es posible que otra institución me esté cobrando una deuda universitaria?\".",
+        "La respuesta nace de la legislación del Fondo Solidario, la que contempla la posibilidad de que las instituciones de educación superior vendan total o parcialmente las carteras de deudores o celebren convenios para la administración y cobranza de los créditos. En otras palabras, la gestión de la deuda puede pasar a manos de terceros quienes se encargarán de realizar el cobro respectivo.",
+        "Sin embargo, el hecho de que cambie el administrador o el titular del crédito no significa que la deuda se vuelva imprescriptible, que desaparezcan las defensas del deudor o que se creen nuevas obligaciones. El nuevo acreedor o administrador, en principio, adquiere la posición existente al momento de la cesión y debe sujetarse a las mismas limitaciones que afectaban al crédito.",
+        "Por ello, recibir comunicaciones de una entidad distinta de la universidad no significa automáticamente que la deuda sea exigible ni que el deudor haya perdido la posibilidad de revisar su situación jurídica. Así, antes de pagar, reconocer la deuda o suscribir una reprogramación, resulta aconsejable conocer el estado real de la obligación, la fecha de exigibilidad de las cuotas, la existencia de pagarés y otros antecedentes relacionados."
       ]
     },
     {
       id: 3,
-      title: "Retención de la Tesorería (TGR) por Fondo Solidario: Mitos y verdades.",
-      excerpt: "Descubre cómo recuperar la devolución de impuestos retenida anualmente por la Tesorería General de la República de forma legal.",
-      date: "15 de Mayo, 2026",
-      readTime: "4 min de lectura",
-      category: "TGR e Impuestos",
+      slug: "hoy-cae-manana-fscu-reglas-pueden-cambiar",
+      title: "Hoy es el CAE, mañana podría ser el FSCU: por qué las reglas del juego pueden volver a cambiar",
+      excerpt: "El CAE y el FSCU son sistemas distintos regulados por leyes diferentes, pero la historia muestra que las reglas cambian y conviene estar preparado.",
+      date: "12 de Mayo, 2026",
+      readTime: "6 min de lectura",
+      category: "Legislación",
       content: [
-        "Cada año en época de Operación Renta, miles de profesionales e independientes ven frustrada su devolución de impuestos debido a la retención automática efectuada por la Tesorería General de la República (TGR) para saldar deudas pendientes de créditos universitarios.",
-        "Es un mito que esta retención sea permanente e intocable. La TGR actúa en base a los listados de morosos entregados por las respectivas universidades. Si esa deuda cumple con los plazos legales para declararse prescrita (más de 5 años de inactividad de cobro legal), la retención del impuesto carece de sustento permanente y puede ser desafiada.",
-        "Para detener de raíz esta retención de cara a los siguientes años, el camino legal es demandar judicialmente a la universidad para que se declare la prescripción de los pagarés asociados. Una vez que se cuenta con la sentencia judicial ejecutoriada de prescripción, se oficia a la universidad y a la TGR para que eliminen la deuda del sistema de retenciones.",
-        "En GMEC Abogados te acompañamos en este proceso para liberar tu flujo de caja de la devolución de impuestos anual y recuperar tus fondos injustamente retenidos."
+        "Durante años, el Crédito con Aval del Estado fue presentado como un sistema permanente de financiamiento de la educación superior. Sin embargo, hoy existe un proyecto de reforma que propone reemplazar el CAE mediante un nuevo sistema de Financiamiento para la Educación Superior (FES), incorporando además medidas que alcanzan al Fondo Solidario y otros créditos estudiantiles.",
+        "Desde una perspectiva jurídica, no existe actualmente una ley que transforme automáticamente una deuda CAE en una deuda del Fondo Solidario, ni viceversa. Son sistemas distintos, regulados por leyes diferentes y con mecanismos de administración propios.",
+        "No obstante, la historia del financiamiento universitario en Chile demuestra que las reglas cambian. El antiguo Crédito Fiscal Universitario dio paso al Fondo Solidario. Posteriormente surgió el CAE. Hoy se discute un nuevo sistema de financiamiento. Asimismo, los mecanismos de cobranza, la administración de las carteras, las facultades de retención y los procedimientos de reprogramación han sido modificados en diversas oportunidades por el legislador.",
+        "Por ello, el verdadero riesgo no es que el CAE \"se transforme\" en Fondo Solidario. El riesgo consiste en asumir que las reglas actuales permanecerán inalterables.",
+        "Las leyes cambian. Los mecanismos de cobro cambian. Los acreedores y administradores pueden cambiar. Y lo que hoy parece un problema exclusivo del CAE, mañana podría tener repercusiones directas o indirectas para los deudores del Fondo Solidario si el legislador vuelve a intervenir el sistema de financiamiento de la educación superior.",
+        "Por esa razón, conocer hoy el estado de una deuda del FSCU, revisar su exigibilidad y evaluar oportunamente las defensas disponibles, puede resultar decisivo antes de que una nueva reforma altere nuevamente el escenario legal y normativo."
       ]
     }
   ];
@@ -199,13 +215,13 @@ export default function Home() {
             <a href="#blog" className="hover:text-brand-navy transition-colors duration-200">Educación Legal</a>
             <a href="#contacto" className="hover:text-brand-navy transition-colors duration-200">Evaluación</a>
             <a
-              href="https://wa.me/569XXXXXXXX?text=Hola,%20necesito%20evaluar%20urgente%20mi%20caso%20del%20Fondo%20Solidario."
+              href="https://wa.me/569XXXXXXXX?text=Hola,%20necesito%20evaluar%20mi%20caso%20del%20Fondo%20Solidario."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan text-white text-sm font-semibold hover:shadow-lg hover:shadow-brand-blue/20 transition-all duration-200"
             >
               <MessageSquare className="w-4 h-4" />
-              Contacto Urgente
+              Contacto
             </a>
           </nav>
 
@@ -251,13 +267,13 @@ export default function Home() {
               Evaluación Gratuita
             </a>
             <a
-              href="https://wa.me/569XXXXXXXX?text=Hola,%20necesito%20evaluar%20urgente%20mi%20caso%20del%20Fondo%20Solidario."
+              href="https://wa.me/569XXXXXXXX?text=Hola,%20necesito%20evaluar%20mi%20caso%20del%20Fondo%20Solidario."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-blue to-brand-cyan text-white text-base font-bold shadow-md"
             >
               <MessageSquare className="w-5 h-5" />
-              Contacto Urgente vía WhatsApp
+              Contacto
             </a>
           </div>
         )}
@@ -281,28 +297,32 @@ export default function Home() {
 
               {/* Headline H1 */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-brand-navy leading-tight tracking-tight mb-6">
-                ¿Te siguen cobrando el FSCU?{" "}
-                <span className="bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-green bg-clip-text text-transparent">
-                  Protegemos tu patrimonio
-                </span>{" "}
-                con defensa legal especializada.
+                ¿Te siguen cobrando el FSCU?
               </h1>
 
               {/* Subheading */}
-              <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl">
-                Evaluamos la prescripción de tu deuda a los 5 años y te defendemos ante cobranzas judiciales en todo Chile de forma remota. Recupera la tranquilidad que mereces.
+              <p className="text-lg text-slate-600 leading-relaxed mb-6 max-w-2xl">
+                Muchas personas desconocen que sus obligaciones vinculadas al FSCU siguen generando intereses y pueden dar origen a cobranzas, retenciones tributarias y otras consecuencias financieras. Una revisión oportuna de tu situación puede ser determinante para conocer tus derechos y alternativas legales.
               </p>
+
+              {/* Contingency Alert Banner */}
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 mb-8 max-w-2xl shadow-sm">
+                <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 animate-pulse" />
+                <span className="text-sm font-extrabold tracking-wide">
+                  Hoy es el CAE, mañana podría ser el FSCU.
+                </span>
+              </div>
 
               {/* Immediate conversion action */}
               <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                 <a
-                  href="https://wa.me/569XXXXXXXX?text=Hola,%20necesito%20evaluar%20urgente%20mi%20caso%20del%20Fondo%20Solidario."
+                  href="https://wa.me/569XXXXXXXX?text=Hola,%20necesito%20evaluar%20mi%20caso%20del%20Fondo%20Solidario."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="animate-pulse-glow flex items-center justify-center gap-3 px-8 py-4.5 rounded-2xl bg-gradient-to-r from-brand-green to-brand-lime text-white text-base font-bold shadow-lg hover:shadow-brand-green/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
                 >
                   <MessageSquare className="w-5 h-5 fill-white/10" />
-                  Contacto Urgente vía WhatsApp
+                  Contacto vía WhatsApp
                 </a>
                 <a
                   href="#contacto"
@@ -332,25 +352,252 @@ export default function Home() {
 
             {/* Right Column (Hero Graphic representation of a court/shield) */}
             <div className="lg:col-span-5 flex justify-center relative">
-              <div className="relative w-72 h-72 md:w-96 md:h-96 flex items-center justify-center bg-white rounded-3xl shadow-2xl border border-slate-100">
+              <div className="relative w-full max-w-sm mx-auto">
                 {/* Floating circles / accents */}
-                <div className="absolute -top-6 -left-6 w-16 h-16 bg-brand-cyan/20 rounded-2xl flex items-center justify-center text-brand-navy font-bold shadow-md animate-bounce">
-                  <Scale className="w-8 h-8 text-brand-blue" />
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-brand-blue/15 rounded-xl flex items-center justify-center text-brand-blue shadow-md z-10 animate-bounce">
+                  <Scale className="w-6 h-6" />
                 </div>
-                <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-brand-green/20 rounded-2xl flex items-center justify-center text-brand-navy font-bold shadow-md animate-pulse">
-                  <ShieldCheck className="w-8 h-8 text-brand-green" />
+                <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-brand-green/15 rounded-xl flex items-center justify-center text-brand-green shadow-md z-10 animate-pulse">
+                  <ShieldCheck className="w-6 h-6" />
                 </div>
 
-                <div className="flex flex-col items-center justify-center p-8 text-center">
-                  <Logo iconOnly className="scale-[2.5] mb-12" />
-                  <h3 className="font-extrabold text-xl text-brand-navy mb-2">Defensa Judicial</h3>
-                  <p className="text-xs text-slate-500 max-w-[200px] leading-relaxed">
-                    Protección patrimonial integral frente a demandas del Fondo Solidario y embargos.
+                {/* Main White Card */}
+                <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-2xl flex flex-col items-center text-center relative overflow-hidden">
+                  <div className="absolute -top-12 -right-12 w-32 h-32 bg-slate-50 rounded-full blur-xl pointer-events-none" />
+                  
+                  <Logo iconOnly className="scale-[1.8] mb-6 mt-2" />
+                  
+                  <h3 className="font-extrabold text-xl text-brand-navy mb-2 leading-snug">
+                    Conoce el estado de tu deuda FSCU
+                  </h3>
+                  <p className="text-xs text-slate-500 max-w-[240px] leading-relaxed mb-4">
+                    recibe orientación especializada para decidir tus próximos pasos.
                   </p>
-                  <div className="mt-6 px-4 py-1.5 rounded-full bg-slate-100 text-[10px] text-slate-600 font-bold uppercase tracking-wider">
+
+                  <ul className="text-left w-full space-y-2.5 my-4 text-xs font-bold text-slate-700">
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-brand-green flex-shrink-0" />
+                      <span>Revisión individual</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-brand-green flex-shrink-0" />
+                      <span>Atención en todo Chile</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-brand-green flex-shrink-0" />
+                      <span>Orientación jurídica especializada</span>
+                    </li>
+                  </ul>
+
+                  <div className="w-full py-2.5 px-3.5 bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200/80 rounded-xl text-amber-900 text-[10px] font-black tracking-wide uppercase my-4 shadow-sm flex items-center justify-center gap-1.5">
+                    <AlertTriangle className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" />
+                    <span>Hoy es el CAE, mañana podría ser el FSCU.</span>
+                  </div>
+                  
+                  <div className="px-4 py-1.5 rounded-full bg-slate-100 text-[10px] text-slate-600 font-bold uppercase tracking-wider mt-2">
                     Firma GMEC Abogados
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECCIÓN P3: ¿QUÉ PODRÍA ESTAR EN JUEGO? */}
+      <section className="py-20 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-brand-blue text-xs md:text-sm font-bold uppercase tracking-wider block mb-2">
+              Consecuencias del Impago
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
+              ¿Qué podría estar en juego?
+            </h2>
+            <div className="w-12 h-1 bg-brand-blue mx-auto mt-4 rounded-full" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Tarjeta 1 */}
+            <div className="relative bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col items-center text-center group hover:shadow-lg transition-all duration-300">
+              <div className="relative w-20 h-20 rounded-full bg-slate-100 flex items-center justify-center mb-6">
+                <Landmark className="w-9 h-9 text-brand-navy" />
+                <div className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-brand-green text-white flex items-center justify-center text-sm font-bold shadow-md">
+                  $
+                </div>
+              </div>
+              <h3 className="text-lg font-extrabold text-brand-navy mb-4 leading-snug">
+                Retenciones de devolución de impuestos
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
+                Las deudas del FSCU pueden generar retenciones de la Operación Renta y otras consecuencias patrimoniales que afectan tu planificación financiera.
+              </p>
+              <div className="w-full border-t border-slate-100 pt-5 mt-auto flex justify-center">
+                <div className="w-8 h-8 rounded-full bg-brand-blue/10 text-brand-blue flex items-center justify-center text-sm font-bold">
+                  1
+                </div>
+              </div>
+              
+              {/* Flecha conectora (solo visible en desktop) */}
+              <div className="hidden lg:block absolute top-16 -right-[26px] z-20">
+                <svg className="w-12 h-6 text-slate-300" fill="none" viewBox="0 0 48 24">
+                  <path d="M4 12h32" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 4" />
+                  <path d="M30 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Tarjeta 2 */}
+            <div className="relative bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col items-center text-center group hover:shadow-lg transition-all duration-300">
+              <div className="relative w-20 h-20 rounded-full bg-slate-100 flex items-center justify-center mb-6">
+                <Mail className="w-9 h-9 text-brand-navy" />
+                <div className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-brand-green text-white flex items-center justify-center shadow-md">
+                  <Bell className="w-4 h-4 text-white" />
+                </div>
+              </div>
+              <h3 className="text-lg font-extrabold text-brand-navy mb-4 leading-snug">
+                Cobranzas y notificaciones
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
+                Las gestiones de cobro pueden mantenerse activas durante años, generando incertidumbre y la necesidad de conocer tu situación jurídica real.
+              </p>
+              <div className="w-full border-t border-slate-100 pt-5 mt-auto flex justify-center">
+                <div className="w-8 h-8 rounded-full bg-brand-blue/10 text-brand-blue flex items-center justify-center text-sm font-bold">
+                  2
+                </div>
+              </div>
+              
+              {/* Flecha conectora (solo visible en desktop) */}
+              <div className="hidden lg:block absolute top-16 -right-[26px] z-20">
+                <svg className="w-12 h-6 text-slate-300" fill="none" viewBox="0 0 48 24">
+                  <path d="M4 12h32" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 4" />
+                  <path d="M30 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Tarjeta 3 */}
+            <div className="relative bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col items-center text-center group hover:shadow-lg transition-all duration-300">
+              <div className="relative w-20 h-20 rounded-full bg-slate-100 flex items-center justify-center mb-6">
+                <TrendingUp className="w-9 h-9 text-brand-navy" />
+                <div className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-brand-green text-white flex items-center justify-center text-sm font-bold shadow-md">
+                  %
+                </div>
+              </div>
+              <h3 className="text-lg font-extrabold text-brand-navy mb-4 leading-snug">
+                Intereses y aumento de la deuda
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
+                El paso del tiempo no siempre juega a favor del deudor. En determinados casos, la deuda puede continuar generando intereses y costos asociados.
+              </p>
+              <div className="w-full border-t border-slate-100 pt-5 mt-auto flex justify-center">
+                <div className="w-8 h-8 rounded-full bg-brand-blue/10 text-brand-blue flex items-center justify-center text-sm font-bold">
+                  3
+                </div>
+              </div>
+              
+              {/* Flecha conectora (solo visible en desktop) */}
+              <div className="hidden lg:block absolute top-16 -right-[26px] z-20">
+                <svg className="w-12 h-6 text-slate-300" fill="none" viewBox="0 0 48 24">
+                  <path d="M4 12h32" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 4" />
+                  <path d="M30 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Tarjeta 4 */}
+            <div className="relative bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col items-center text-center group hover:shadow-lg transition-all duration-300">
+              <div className="relative w-20 h-20 rounded-full bg-slate-100 flex items-center justify-center mb-6">
+                <Scale className="w-9 h-9 text-brand-navy" />
+              </div>
+              <h3 className="text-lg font-extrabold text-brand-navy mb-4 leading-snug">
+                Demandas y restricciones patrimoniales
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
+                Dependiendo de las circunstancias de cada caso, pueden existir actuaciones judiciales que hagan recomendable revisar oportunamente los antecedentes.
+              </p>
+              <div className="w-full border-t border-slate-100 pt-5 mt-auto flex justify-center">
+                <div className="w-8 h-8 rounded-full bg-brand-blue/10 text-brand-blue flex items-center justify-center text-sm font-bold">
+                  4
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECCIÓN P4: ¿POR QUÉ CONVIENE CONOCER TU SITUACIÓN? */}
+      <section className="py-20 bg-slate-50 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
+              ¿Por qué conviene conocer tu situación?
+            </h2>
+            <div className="w-12 h-1 bg-brand-green mx-auto mt-4 rounded-full" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-slate-200/80 bg-white rounded-3xl border border-slate-200/60 shadow-xl shadow-slate-100/50 overflow-hidden">
+            {/* Columna 1 */}
+            <div className="flex flex-col items-center text-center p-8 lg:px-6">
+              <div className="w-16 h-16 rounded-full bg-brand-green/10 flex items-center justify-center mb-6">
+                <Search className="w-7 h-7 text-brand-green" />
+              </div>
+              <h3 className="text-lg font-extrabold text-brand-navy mb-4 leading-snug min-h-[56px] flex items-center justify-center">
+                Porque las reglas pueden cambiar
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
+                El financiamiento estudiantil en Chile ha sido objeto de múltiples reformas y futuras modificaciones legales pueden alterar nuevamente el escenario del FSCU.
+              </p>
+              <div className="w-10 h-10 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mt-auto">
+                <Landmark className="w-5 h-5" />
+              </div>
+            </div>
+
+            {/* Columna 2 */}
+            <div className="flex flex-col items-center text-center p-8 lg:px-6">
+              <div className="w-16 h-16 rounded-full bg-brand-green/10 flex items-center justify-center mb-6">
+                <Timer className="w-7 h-7 text-brand-green" />
+              </div>
+              <h3 className="text-lg font-extrabold text-brand-navy mb-4 leading-snug min-h-[56px] flex items-center justify-center">
+                Porque el tiempo puede ser determinante
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
+                La fecha de exigibilidad, los pagos, las cobranzas and las actuaciones judiciales pueden tener relevancia jurídica en la situación de cada persona.
+              </p>
+              <div className="w-10 h-10 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mt-auto">
+                <Clock className="w-5 h-5" />
+              </div>
+            </div>
+
+            {/* Columna 3 */}
+            <div className="flex flex-col items-center text-center p-8 lg:px-6">
+              <div className="w-16 h-16 rounded-full bg-brand-green/10 flex items-center justify-center mb-6">
+                <ClipboardCheck className="w-7 h-7 text-brand-green" />
+              </div>
+              <h3 className="text-lg font-extrabold text-brand-navy mb-4 leading-snug min-h-[56px] flex items-center justify-center">
+                Porque no todas las deudas están en la misma situación
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
+                Cada caso tiene una historia distinta. Dos personas con el mismo monto adeudado pueden encontrarse en escenarios jurídicos completamente diferentes.
+              </p>
+              <div className="w-10 h-10 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mt-auto">
+                <Users className="w-5 h-5" />
+              </div>
+            </div>
+
+            {/* Columna 4 */}
+            <div className="flex flex-col items-center text-center p-8 lg:px-6">
+              <div className="w-16 h-16 rounded-full bg-brand-green/10 flex items-center justify-center mb-6">
+                <ShieldCheck className="w-7 h-7 text-brand-green" />
+              </div>
+              <h3 className="text-lg font-extrabold text-brand-navy mb-4 leading-snug min-h-[56px] flex items-center justify-center">
+                Porque conocer tu situación permite tomar decisiones informadas
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
+                Antes de pagar, negociar o asumir que no existen alternativas, es importante comprender el estado jurídico real de tu caso.
+              </p>
+              <div className="w-10 h-10 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mt-auto">
+                <Scale className="w-5 h-5" />
               </div>
             </div>
           </div>
@@ -471,166 +718,220 @@ export default function Home() {
       </section>
 
       {/* 4. SECCIÓN: CONTACTO (EMBUDO DE EVALUACIÓN PRELIMINAR) */}
-      <section id="contacto" className="py-20 md:py-28 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">
-              Solicita una Evaluación Preliminar de tu Caso
-            </h2>
-            <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
-              Si tu caso puede esperar una revisión detallada de hasta 24 horas hábiles, completa el siguiente formulario oficial:
-            </p>
-          </div>
-
-          <div className="bg-slate-50 border border-slate-200/80 rounded-3xl p-6 md:p-10 shadow-xl shadow-slate-100">
-            {isSubmitted ? (
-              <div className="text-center py-12 flex flex-col items-center animate-fade-in">
-                <div className="w-16 h-16 rounded-full bg-brand-green/20 flex items-center justify-center text-brand-green mb-6 scale-110">
-                  <Check className="w-8 h-8" />
+      <section id="contacto" className="py-20 md:py-28 bg-slate-50/50 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            {/* Columna Izquierda: Formulario */}
+            <div className="lg:col-span-7 bg-white border border-slate-200/80 rounded-3xl p-6 md:p-10 shadow-xl shadow-slate-100/50 order-2 lg:order-1">
+              <h2 className="text-2xl font-extrabold text-brand-navy mb-4">
+                Solicita una Evaluación Preliminar de tu Caso
+              </h2>
+              <p className="text-sm text-slate-500 mb-8 leading-relaxed">
+                Si tu caso puede esperar una revisión detallada de hasta 24 horas hábiles, completa el siguiente formulario oficial:
+              </p>
+              
+              {isSubmitted ? (
+                <div className="text-center py-12 flex flex-col items-center animate-fade-in">
+                  <div className="w-16 h-16 rounded-full bg-brand-green/20 flex items-center justify-center text-brand-green mb-6 scale-110">
+                    <Check className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-brand-navy mb-3">¡Formulario Recibido Exitosamente!</h3>
+                  <p className="text-slate-600 max-w-md mx-auto leading-relaxed text-sm">
+                    Un abogado especialista de **GMEC Abogados** evaluará tu situación legal con absoluta confidencialidad y se contactará contigo en un plazo máximo de 24 horas hábiles.
+                  </p>
+                  <button
+                    onClick={() => setIsSubmitted(false)}
+                    className="mt-8 px-6 py-2.5 rounded-full border border-slate-300 text-slate-700 font-bold hover:bg-slate-100 transition-colors text-sm"
+                  >
+                    Enviar otra consulta
+                  </button>
                 </div>
-                <h3 className="text-2xl font-bold text-brand-navy mb-3">¡Formulario Recibido Exitosamente!</h3>
-                <p className="text-slate-600 max-w-md mx-auto leading-relaxed text-sm">
-                  Un abogado especialista de **GMEC Abogados** evaluará tu situación legal con absoluta confidencialidad y se contactará contigo en un plazo máximo de 24 horas hábiles.
-                </p>
-                <button
-                  onClick={() => setIsSubmitted(false)}
-                  className="mt-8 px-6 py-2.5 rounded-full border border-slate-300 text-slate-700 font-bold hover:bg-slate-100 transition-colors text-sm"
-                >
-                  Enviar otra consulta
-                </button>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Nombre Completo */}
+                    <div>
+                      <label htmlFor="nombre" className="block text-sm font-bold text-slate-700 mb-2">
+                        Nombre Completo *
+                      </label>
+                      <input
+                        type="text"
+                        id="nombre"
+                        required
+                        value={nombre}
+                        onChange={(e) => setNombre(e.target.value)}
+                        placeholder="Ej. Juan Pérez González"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-300/80 focus:ring-2 focus:ring-brand-blue/35 focus:border-brand-blue outline-none transition-all text-sm bg-white"
+                      />
+                    </div>
+
+                    {/* RUT */}
+                    <div>
+                      <label htmlFor="rut" className="block text-sm font-bold text-slate-700 mb-2">
+                        RUT *
+                      </label>
+                      <input
+                        type="text"
+                        id="rut"
+                        required
+                        value={rut}
+                        onChange={handleRutChange}
+                        placeholder="Ej. 12.345.678-9"
+                        className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all text-sm bg-white ${
+                          rutError
+                            ? "border-red-400 focus:ring-red-200 focus:border-red-500"
+                            : "border-slate-300/80 focus:ring-brand-blue/35 focus:border-brand-blue"
+                        }`}
+                      />
+                      {rutError && (
+                        <p className="text-xs text-red-500 font-semibold mt-1.5 flex items-center gap-1 animate-fade-in">
+                          <AlertCircle className="w-3.5 h-3.5" />
+                          {rutError}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Correo Electrónico */}
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-bold text-slate-700 mb-2">
+                        Correo Electrónico *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        required
+                        value={email}
+                        onChange={handleEmailChange}
+                        placeholder="correo@ejemplo.cl"
+                        className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all text-sm bg-white ${
+                          emailError
+                            ? "border-red-400 focus:ring-red-200 focus:border-red-500"
+                            : "border-slate-300/80 focus:ring-brand-blue/35 focus:border-brand-blue"
+                        }`}
+                      />
+                      {emailError && (
+                        <p className="text-xs text-red-500 font-semibold mt-1.5 flex items-center gap-1 animate-fade-in">
+                          <AlertCircle className="w-3.5 h-3.5" />
+                          {emailError}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Año de Egreso / Retiro */}
+                    <div>
+                      <label htmlFor="anio" className="block text-sm font-bold text-slate-700 mb-2">
+                        Año Egreso / Retiro de la Universidad *
+                      </label>
+                      <select
+                        id="anio"
+                        required
+                        value={anio}
+                        onChange={(e) => setAnio(e.target.value)}
+                        className="w-full px-4 py-3 rounded-xl border border-slate-300/80 focus:ring-2 focus:ring-brand-blue/35 focus:border-brand-blue outline-none transition-all text-sm bg-white"
+                      >
+                        <option value="">Selecciona una opción</option>
+                        {Array.from({ length: 47 }, (_, i) => 2026 - i).map((year) => (
+                          <option key={year} value={year}>
+                            {year}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Checkbox obligatorios */}
+                  <div className="flex gap-3 items-start border-t border-slate-200 pt-6 mt-6">
+                    <input
+                      type="checkbox"
+                      id="consentimiento"
+                      required
+                      checked={checkbox}
+                      onChange={(e) => setCheckbox(e.target.checked)}
+                      className="w-4 h-4 rounded border-slate-300 text-brand-navy focus:ring-brand-blue/40 mt-1 cursor-pointer"
+                    />
+                    <label htmlFor="consentimiento" className="text-xs text-slate-500 leading-relaxed select-none cursor-pointer">
+                      Declaro que la información proporcionada es veraz y autorizo a GMEC Abogados a tratar mis datos personales para efectos de la evaluación preliminar de mi situación jurídica y para contactarme en relación con esta consulta. Asimismo, entiendo que el envío de este formulario no constituye contratación de servicios profesionales ni genera una relación abogado-cliente.
+                    </label>
+                  </div>
+
+                  {/* Botón de Envío */}
+                  <button
+                    type="submit"
+                    disabled={!checkbox || !!rutError || !!emailError || !nombre || !rut || !email || !anio || isSubmitting}
+                    className={`w-full py-4 rounded-2xl text-base font-bold shadow-lg transition-all duration-300 flex items-center justify-center gap-2 ${
+                      checkbox && !rutError && !emailError && nombre && rut && email && anio && !isSubmitting
+                        ? "bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-green text-white hover:opacity-95 hover:scale-[1.01] cursor-pointer"
+                        : "bg-slate-200 text-slate-400 cursor-not-allowed shadow-none"
+                    }`}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-slate-400 border-t-brand-navy rounded-full animate-spin" />
+                        Procesando Solicitud...
+                      </>
+                    ) : (
+                      "Enviar Formulario de Evaluación"
+                    )}
+                  </button>
+                </form>
+              )}
+            </div>
+
+            {/* Columna Derecha: Tarjeta visual informativa */}
+            <div className="lg:col-span-5 flex flex-col justify-center items-center order-1 lg:order-2 py-4">
+              <div className="relative w-full max-w-sm mx-auto lg:mx-0">
+                {/* Accent Top-Left */}
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-brand-blue/15 rounded-xl flex items-center justify-center text-brand-blue shadow-md z-10 animate-bounce">
+                  <Scale className="w-6 h-6" />
+                </div>
+                {/* Accent Bottom-Right */}
+                <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-brand-green/15 rounded-xl flex items-center justify-center text-brand-green shadow-md z-10 animate-pulse">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+
+                {/* Main White Card */}
+                <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-2xl flex flex-col items-center text-center relative overflow-hidden">
+                  <div className="absolute -top-12 -right-12 w-32 h-32 bg-slate-50 rounded-full blur-xl pointer-events-none" />
+                  
+                  <Logo iconOnly className="scale-[1.8] mb-6 mt-2" />
+                  
+                  <h3 className="font-extrabold text-xl text-brand-navy mb-2 leading-snug">
+                    Conoce el estado de tu deuda FSCU
+                  </h3>
+                  <p className="text-xs text-slate-500 max-w-[240px] leading-relaxed mb-4">
+                    recibe orientación especializada para decidir tus próximos pasos.
+                  </p>
+
+                  <ul className="text-left w-full space-y-2.5 my-4 text-xs font-bold text-slate-700">
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-brand-green flex-shrink-0" />
+                      <span>Revisión individual</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-brand-green flex-shrink-0" />
+                      <span>Atención en todo Chile</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-brand-green flex-shrink-0" />
+                      <span>Orientación jurídica especializada</span>
+                    </li>
+                  </ul>
+
+                  <div className="w-full py-2.5 px-3.5 bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200/80 rounded-xl text-amber-900 text-[10px] font-black tracking-wide uppercase my-4 shadow-sm flex items-center justify-center gap-1.5">
+                    <AlertTriangle className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" />
+                    <span>Hoy es el CAE, mañana podría ser el FSCU.</span>
+                  </div>
+                  
+                  <div className="px-4 py-1.5 rounded-full bg-slate-100 text-[10px] text-slate-600 font-bold uppercase tracking-wider mt-2">
+                    Firma GMEC Abogados
+                  </div>
+                </div>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Nombre Completo */}
-                  <div>
-                    <label htmlFor="nombre" className="block text-sm font-bold text-slate-700 mb-2">
-                      Nombre Completo *
-                    </label>
-                    <input
-                      type="text"
-                      id="nombre"
-                      required
-                      value={nombre}
-                      onChange={(e) => setNombre(e.target.value)}
-                      placeholder="Ej. Juan Pérez González"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300/80 focus:ring-2 focus:ring-brand-blue/35 focus:border-brand-blue outline-none transition-all text-sm bg-white"
-                    />
-                  </div>
+            </div>
 
-                  {/* RUT */}
-                  <div>
-                    <label htmlFor="rut" className="block text-sm font-bold text-slate-700 mb-2">
-                      RUT *
-                    </label>
-                    <input
-                      type="text"
-                      id="rut"
-                      required
-                      value={rut}
-                      onChange={handleRutChange}
-                      placeholder="Ej. 12.345.678-9"
-                      className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all text-sm bg-white ${
-                        rutError
-                          ? "border-red-400 focus:ring-red-200 focus:border-red-500"
-                          : "border-slate-300/80 focus:ring-brand-blue/35 focus:border-brand-blue"
-                      }`}
-                    />
-                    {rutError && (
-                      <p className="text-xs text-red-500 font-semibold mt-1.5 flex items-center gap-1 animate-fade-in">
-                        <AlertCircle className="w-3.5 h-3.5" />
-                        {rutError}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Correo Electrónico */}
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-bold text-slate-700 mb-2">
-                      Correo Electrónico *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      required
-                      value={email}
-                      onChange={handleEmailChange}
-                      placeholder="correo@ejemplo.cl"
-                      className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all text-sm bg-white ${
-                        emailError
-                          ? "border-red-400 focus:ring-red-200 focus:border-red-500"
-                          : "border-slate-300/80 focus:ring-brand-blue/35 focus:border-brand-blue"
-                      }`}
-                    />
-                    {emailError && (
-                      <p className="text-xs text-red-500 font-semibold mt-1.5 flex items-center gap-1 animate-fade-in">
-                        <AlertCircle className="w-3.5 h-3.5" />
-                        {emailError}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Año de Egreso / Retiro */}
-                  <div>
-                    <label htmlFor="anio" className="block text-sm font-bold text-slate-700 mb-2">
-                      Año Egreso / Retiro de la Universidad *
-                    </label>
-                    <select
-                      id="anio"
-                      required
-                      value={anio}
-                      onChange={(e) => setAnio(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300/80 focus:ring-2 focus:ring-brand-blue/35 focus:border-brand-blue outline-none transition-all text-sm bg-white"
-                    >
-                      <option value="">Selecciona una opción</option>
-                      {Array.from({ length: 47 }, (_, i) => 2026 - i).map((year) => (
-                        <option key={year} value={year}>
-                          {year}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Checkbox obligatorios */}
-                <div className="flex gap-3 items-start border-t border-slate-200 pt-6 mt-6">
-                  <input
-                    type="checkbox"
-                    id="consentimiento"
-                    required
-                    checked={checkbox}
-                    onChange={(e) => setCheckbox(e.target.checked)}
-                    className="w-4 h-4 rounded border-slate-300 text-brand-navy focus:ring-brand-blue/40 mt-1 cursor-pointer"
-                  />
-                  <label htmlFor="consentimiento" className="text-xs text-slate-500 leading-relaxed select-none cursor-pointer">
-                    Declaro que la información proporcionada es veraz y autorizo a GMEC Abogados a tratar mis datos personales para efectos de la evaluación preliminar de mi situación jurídica y para contactarme en relación con esta consulta. Asimismo, entiendo que el envío de este formulario no constituye contratación de servicios profesionales ni genera una relación abogado-cliente.
-                  </label>
-                </div>
-
-                {/* Botón de Envío */}
-                <button
-                  type="submit"
-                  disabled={!checkbox || !!rutError || !!emailError || !nombre || !rut || !email || !anio || isSubmitting}
-                  className={`w-full py-4 rounded-2xl text-base font-bold shadow-lg transition-all duration-300 flex items-center justify-center gap-2 ${
-                    checkbox && !rutError && !emailError && nombre && rut && email && anio && !isSubmitting
-                      ? "bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-green text-white hover:opacity-95 hover:scale-[1.01] cursor-pointer"
-                      : "bg-slate-200 text-slate-400 cursor-not-allowed shadow-none"
-                  }`}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-slate-400 border-t-brand-navy rounded-full animate-spin" />
-                      Procesando Solicitud...
-                    </>
-                  ) : (
-                    "Enviar Formulario de Evaluación"
-                  )}
-                </button>
-              </form>
-            )}
           </div>
         </div>
       </section>
@@ -671,6 +972,7 @@ export default function Home() {
                   <MapPin className="w-4 h-4 text-brand-cyan" />
                   Atención 100% remota con cobertura en todas las regiones de Chile
                 </div>
+                {/* TODO: Logo GMEC pendiente — insertar aquí cuando el cliente lo envíe */}
               </div>
             </div>
 
