@@ -138,7 +138,7 @@ export default function Home() {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch("https://formsubmit.co/ajax/contacto@gmecspa.cl", {
+      const response = await fetch("https://formsubmit.co/ajax/06ac12285ff29de2a1687654c44d9cb5", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
