@@ -131,23 +131,47 @@ export default function Home() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!checkbox || rutError || emailError || !nombre || !rut || !email || !anio) return;
     
     setIsSubmitting(true);
     
-    // Simulate API request
-    setTimeout(() => {
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/contacto@gmecabogados.cl", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          "Nombre Completo": nombre,
+          "RUT": rut,
+          "Correo Electrónico": email,
+          "Año de Egreso / Retiro": anio,
+          "_subject": `Nueva Solicitud de Evaluación Preliminar - ${nombre}`,
+          "_replyto": email,
+          "_captcha": "false"
+        })
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        // Reset form
+        setNombre("");
+        setRut("");
+        setEmail("");
+        setAnio("");
+        setCheckbox(false);
+      } else {
+        alert("Ocurrió un error al enviar tu solicitud. Por favor, vuelve a intentarlo.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Error de conexión. Por favor, verifica tu conexión a internet e inténtalo de nuevo.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      // Reset form
-      setNombre("");
-      setRut("");
-      setEmail("");
-      setAnio("");
-      setCheckbox(false);
-    }, 1500);
+    }
   };
 
   // Pre-rendered Blog Content for SEO & Jurisprudence Display
