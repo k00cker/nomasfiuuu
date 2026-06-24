@@ -305,13 +305,7 @@ export default function Home() {
                 Muchas personas desconocen que sus obligaciones vinculadas al FSCU siguen generando intereses y pueden dar origen a cobranzas, retenciones tributarias y otras consecuencias financieras. Una revisión oportuna de tu situación puede ser determinante para conocer tus derechos y alternativas legales.
               </p>
 
-              {/* Contingency Alert Banner */}
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 mb-8 max-w-2xl shadow-sm">
-                <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 animate-pulse" />
-                <span className="text-sm font-extrabold tracking-wide">
-                  Hoy es el CAE, mañana podría ser el FSCU.
-                </span>
-              </div>
+
 
               {/* Immediate conversion action */}
               <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -394,8 +388,14 @@ export default function Home() {
                     <span>Hoy es el CAE, mañana podría ser el FSCU.</span>
                   </div>
                   
-                  <div className="px-4 py-1.5 rounded-full bg-slate-100 text-[10px] text-slate-600 font-bold uppercase tracking-wider mt-2">
-                    Firma GMEC Abogados
+                  <div className="pt-2">
+                    <Image
+                      src="/img/gmecLOGO.jpeg"
+                      alt="Logo GMEC Abogados"
+                      width={140}
+                      height={42}
+                      className="rounded-lg opacity-95 hover:opacity-100 transition-all duration-300"
+                    />
                   </div>
                 </div>
               </div>
@@ -925,8 +925,14 @@ export default function Home() {
                     <span>Hoy es el CAE, mañana podría ser el FSCU.</span>
                   </div>
                   
-                  <div className="px-4 py-1.5 rounded-full bg-slate-100 text-[10px] text-slate-600 font-bold uppercase tracking-wider mt-2">
-                    Firma GMEC Abogados
+                  <div className="pt-2">
+                    <Image
+                      src="/img/gmecLOGO.jpeg"
+                      alt="Logo GMEC Abogados"
+                      width={140}
+                      height={42}
+                      className="rounded-lg opacity-95 hover:opacity-100 transition-all duration-300"
+                    />
                   </div>
                 </div>
               </div>
