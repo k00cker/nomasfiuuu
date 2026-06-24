@@ -38,3 +38,14 @@ body {
 .animate-pulse-glow {
   animation: pulse-glow 2s infinite ease-in-out;
 }
+
+.glow-hover {
+  color: var(--color-brand-cyan);
+  font-weight: 800;
+  transition: all 0.3s ease;
+}
+.glow-hover:hover {
+  color: var(--color-brand-lime);
+  text-shadow: 0 0 10px var(--color-brand-cyan), 0 0 3px var(--color-brand-cyan);
+}
+

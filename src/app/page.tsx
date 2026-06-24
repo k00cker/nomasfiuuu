@@ -1018,9 +1018,22 @@ export default function Home() {
               <span className="font-extrabold text-slate-400 block mb-1">Aviso Legal Destacado (Disclaimer):</span>
               El uso de esta plataforma y el envío de formularios web regulan una solicitud informativa preliminar y no configuran un mandato judicial ni contrato de prestación de servicios hasta la firma del documento correspondiente.
             </p>
-            <p className="border-t border-slate-800/60 pt-6 text-center text-[10px]">
-              &copy; {new Date().getFullYear()} GMEC Abogados. Todos los derechos reservados. Sitio diseñado para nomasfscu.cl.
-            </p>
+            <div className="border-t border-slate-800/60 pt-6 flex flex-col md:flex-row md:justify-between items-center gap-4 text-[10px]">
+              <p className="text-center md:text-left">
+                &copy; {new Date().getFullYear()} GMEC Abogados. Todos los derechos reservados. Sitio diseñado para nomasfscu.cl.
+              </p>
+              <p className="text-center md:text-right text-slate-500 font-medium">
+                Sitio desarrollado por{" "}
+                <a
+                  href="https://www.elquicode.cl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glow-hover"
+                >
+                  www.elquicode.cl
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </footer>
