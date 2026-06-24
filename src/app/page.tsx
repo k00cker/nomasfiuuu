@@ -215,7 +215,7 @@ export default function Home() {
             <a href="#blog" className="hover:text-brand-navy transition-colors duration-200">Educación Legal</a>
             <a href="#contacto" className="hover:text-brand-navy transition-colors duration-200">Evaluación</a>
             <a
-              href="https://wa.me/569XXXXXXXX?text=Hola,%20necesito%20evaluar%20mi%20caso%20del%20Fondo%20Solidario."
+              href="https://wa.me/56963064291?text=Hola,%20necesito%20evaluar%20mi%20caso%20del%20Fondo%20Solidario."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan text-white text-sm font-semibold hover:shadow-lg hover:shadow-brand-blue/20 transition-all duration-200"
@@ -267,7 +267,7 @@ export default function Home() {
               Evaluación Gratuita
             </a>
             <a
-              href="https://wa.me/569XXXXXXXX?text=Hola,%20necesito%20evaluar%20mi%20caso%20del%20Fondo%20Solidario."
+              href="https://wa.me/56963064291?text=Hola,%20necesito%20evaluar%20mi%20caso%20del%20Fondo%20Solidario."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-blue to-brand-cyan text-white text-base font-bold shadow-md"
@@ -316,7 +316,7 @@ export default function Home() {
               {/* Immediate conversion action */}
               <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                 <a
-                  href="https://wa.me/569XXXXXXXX?text=Hola,%20necesito%20evaluar%20mi%20caso%20del%20Fondo%20Solidario."
+                  href="https://wa.me/56963064291?text=Hola,%20necesito%20evaluar%20mi%20caso%20del%20Fondo%20Solidario."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="animate-pulse-glow flex items-center justify-center gap-3 px-8 py-4.5 rounded-2xl bg-gradient-to-r from-brand-green to-brand-lime text-white text-base font-bold shadow-lg hover:shadow-brand-green/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
@@ -962,17 +962,25 @@ export default function Home() {
                   contacto@gmecabogados.cl
                 </a>
                 <a
-                  href="tel:+562XXXXXXXX"
+                  href="tel:+56963064291"
                   className="flex items-center gap-2 hover:text-white transition-colors duration-200"
                 >
                   <Phone className="w-4 h-4 text-brand-cyan" />
-                  +56 2 2XXX XXXX
+                  +56 9 6306 4291
                 </a>
                 <div className="flex items-center gap-2 text-slate-400">
                   <MapPin className="w-4 h-4 text-brand-cyan" />
                   Atención 100% remota con cobertura en todas las regiones de Chile
                 </div>
-                {/* TODO: Logo GMEC pendiente — insertar aquí cuando el cliente lo envíe */}
+                <div className="pt-2">
+                  <Image
+                    src="/img/gmecLOGO.jpeg"
+                    alt="Logo GMEC Abogados"
+                    width={180}
+                    height={54}
+                    className="rounded-xl opacity-95 hover:opacity-100 transition-all duration-300 shadow-md border border-slate-800"
+                  />
+                </div>
               </div>
             </div>
 
@@ -1060,7 +1068,7 @@ export default function Home() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 pt-2">
                   <a
-                    href={`https://wa.me/569XXXXXXXX?text=Hola,%20leí%20su%20artículo%20sobre%20${encodeURIComponent(
+                    href={`https://wa.me/56963064291?text=Hola,%20leí%20su%20artículo%20sobre%20${encodeURIComponent(
                       activeArticle.title
                     )}%20y%20quiero%20evaluar%20mi%20caso.`}
                     target="_blank"
