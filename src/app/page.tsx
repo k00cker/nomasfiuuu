@@ -138,7 +138,7 @@ export default function Home() {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch("https://formsubmit.co/ajax/contacto@gmecabogados.cl", {
+      const response = await fetch("https://formsubmit.co/ajax/contacto@gmecspa.cl", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -985,11 +985,11 @@ export default function Home() {
               </h4>
               <div className="space-y-3 text-sm">
                 <a
-                  href="mailto:contacto@gmecabogados.cl"
+                  href="mailto:contacto@gmecspa.cl"
                   className="flex items-center gap-2 hover:text-white transition-colors duration-200"
                 >
                   <Mail className="w-4 h-4 text-brand-cyan" />
-                  contacto@gmecabogados.cl
+                  contacto@gmecspa.cl
                 </a>
                 <a
                   href="tel:+56963064291"
