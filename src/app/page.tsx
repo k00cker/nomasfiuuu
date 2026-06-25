@@ -563,7 +563,7 @@ export default function Home() {
                 </div>
                 <div>
                   <div className="text-2xl md:text-3xl font-black text-brand-navy">100%</div>
-                  <div className="text-xs md:text-sm text-slate-500 font-medium mt-0.5">Gestión Remota Chile</div>
+                  <div className="text-xs md:text-sm text-slate-500 font-medium mt-0.5">Gestión Remota, Evaluación personalizada</div>
                 </div>
                 <div>
                   <div className="text-2xl md:text-3xl font-black text-brand-navy">Confidencial</div>
