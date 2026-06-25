@@ -49,16 +49,16 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [anio, setAnio] = useState("");
   const [checkbox, setCheckbox] = useState(false);
-  
+
   // Validation States
   const [rutError, setRutError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   // Mobile Nav State
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
+
   // Active Modal Article
   const [activeArticle, setActiveArticle] = useState<Article | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -103,7 +103,7 @@ export default function Home() {
       };
 
       document.addEventListener("keydown", handleKeyDown);
-      
+
       // Prevent body scrolling when modal is open
       document.body.style.overflow = "hidden";
 
@@ -124,7 +124,7 @@ export default function Home() {
         clearTimeout(timer);
         document.removeEventListener("keydown", handleKeyDown);
         document.body.style.overflow = "";
-        
+
         // Restore focus
         if (previousFocusRef.current) {
           previousFocusRef.current.focus();
@@ -137,21 +137,21 @@ export default function Home() {
   const validateRut = (rutStr: string): boolean => {
     const clean = rutStr.replace(/[^0-9kK]/g, "");
     if (clean.length < 8) return false;
-    
+
     const body = clean.slice(0, -1);
     const dv = clean.slice(-1).toLowerCase();
-    
+
     let sum = 0;
     let multiplier = 2;
-    
+
     for (let i = body.length - 1; i >= 0; i--) {
       sum += parseInt(body[i]) * multiplier;
       multiplier = multiplier === 7 ? 2 : multiplier + 1;
     }
-    
+
     const remainder = sum % 11;
     const calculatedDv = remainder === 0 ? "0" : remainder === 1 ? "k" : (11 - remainder).toString();
-    
+
     return dv === calculatedDv;
   };
 
@@ -159,10 +159,10 @@ export default function Home() {
     // Remove all characters except digits and K/k
     const clean = rutStr.replace(/[^0-9kK]/g, "");
     if (clean.length <= 1) return clean;
-    
+
     const body = clean.slice(0, -1);
     const dv = clean.slice(-1);
-    
+
     let formattedBody = "";
     for (let i = body.length - 1, count = 0; i >= 0; i--, count++) {
       if (count > 0 && count % 3 === 0) {
@@ -170,14 +170,14 @@ export default function Home() {
       }
       formattedBody = body[i] + formattedBody;
     }
-    
+
     return `${formattedBody}-${dv}`.toUpperCase();
   };
 
   const handleRutChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatRut(e.target.value);
     setRut(formatted);
-    
+
     if (formatted.length > 0) {
       if (!validateRut(formatted)) {
         setRutError("RUT inválido. Ingrese un RUT chileno válido (ej. 12.345.678-9).");
@@ -192,7 +192,7 @@ export default function Home() {
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     setEmail(val);
-    
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (val.length > 0 && !emailRegex.test(val)) {
       setEmailError("Ingrese un correo electrónico válido.");
@@ -204,9 +204,9 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!checkbox || rutError || emailError || !nombre || !rut || !email || !anio) return;
-    
+
     setIsSubmitting(true);
-    
+
     try {
       const response = await fetch("https://formsubmit.co/ajax/06ac12285ff29de2a1687654c44d9cb5", {
         method: "POST",
@@ -435,7 +435,7 @@ export default function Home() {
       <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-md transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <Logo />
-          
+
           {/* Desktop Navigation Menu */}
           <nav className="hidden md:flex items-center gap-8 font-sans font-medium text-slate-600">
             <a href="#inicio" className="hover:text-brand-navy transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none rounded-md px-1">Inicio</a>
@@ -586,9 +586,9 @@ export default function Home() {
                 {/* Main White Card */}
                 <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-2xl flex flex-col items-center text-center relative overflow-hidden">
                   <div className="absolute -top-12 -right-12 w-32 h-32 bg-slate-50 rounded-full blur-xl pointer-events-none" />
-                  
+
                   <Logo iconOnly className="scale-[1.8] mb-6 mt-2" />
-                  
+
                   <h3 className="font-extrabold text-xl text-brand-navy mb-2 leading-snug">
                     Conoce el estado de tu deuda FSCU
                   </h3>
@@ -615,7 +615,7 @@ export default function Home() {
                     <AlertTriangle className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" />
                     <span>Hoy es el CAE, mañana podría ser el FSCU.</span>
                   </div>
-                  
+
                   <div className="pt-2">
                     <Image
                       src="/img/gmecLOGO.jpeg"
@@ -637,7 +637,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-brand-blue text-xs md:text-sm font-bold uppercase tracking-wider block mb-2">
-              Consecuencias del Impago
+
             </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
               ¿Qué podría estar en juego?
@@ -665,7 +665,7 @@ export default function Home() {
                   1
                 </div>
               </div>
-              
+
               {/* Flecha conectora (solo visible en desktop) */}
               <div className="hidden lg:block absolute top-16 -right-[26px] z-20">
                 <svg className="w-12 h-6 text-slate-300" fill="none" viewBox="0 0 48 24">
@@ -694,7 +694,7 @@ export default function Home() {
                   2
                 </div>
               </div>
-              
+
               {/* Flecha conectora (solo visible en desktop) */}
               <div className="hidden lg:block absolute top-16 -right-[26px] z-20">
                 <svg className="w-12 h-6 text-slate-300" fill="none" viewBox="0 0 48 24">
@@ -723,7 +723,7 @@ export default function Home() {
                   3
                 </div>
               </div>
-              
+
               {/* Flecha conectora (solo visible en desktop) */}
               <div className="hidden lg:block absolute top-16 -right-[26px] z-20">
                 <svg className="w-12 h-6 text-slate-300" fill="none" viewBox="0 0 48 24">
@@ -835,7 +835,7 @@ export default function Home() {
       {/* 2. SECCIÓN: LO QUE HACEMOS (SERVICIOS Y ENFOQUE) */}
       <section id="lo-que-hacemos" className="py-20 md:py-28 bg-white border-t border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
             <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">
               Nuestra Especialidad: Tu tranquilidad frente al Fondo Solidario
@@ -893,7 +893,7 @@ export default function Home() {
       {/* 3. SECCIÓN: BLOG (EDUCACIÓN Y AUTORIDAD) */}
       <section id="blog" className="py-20 md:py-28 bg-brand-navy text-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
             <div>
               <span className="text-brand-cyan text-xs md:text-sm font-bold uppercase tracking-wider block mb-2">
@@ -923,15 +923,15 @@ export default function Home() {
                     {article.date}
                   </span>
                 </div>
-                
+
                 <h3 className="text-xl font-bold text-white mb-4 line-clamp-2 group-hover:text-brand-cyan transition-colors duration-200">
                   {article.title}
                 </h3>
-                
+
                 <p className="text-slate-300 text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
                   {article.excerpt}
                 </p>
-                
+
                 <button
                   onClick={() => setActiveArticle(article)}
                   aria-haspopup="dialog"
@@ -950,7 +950,7 @@ export default function Home() {
       <section id="contacto" className="py-20 md:py-28 bg-slate-50/50 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            
+
             {/* Columna Izquierda: Formulario */}
             <div className="lg:col-span-7 bg-white border border-slate-200/80 rounded-3xl p-6 md:p-10 shadow-xl shadow-slate-100/50 order-2 lg:order-1">
               <h2 className="text-2xl font-extrabold text-brand-navy mb-4">
@@ -959,7 +959,7 @@ export default function Home() {
               <p className="text-sm text-slate-500 mb-8 leading-relaxed">
                 Si tu caso puede esperar una revisión detallada de hasta 24 horas hábiles, completa el siguiente formulario oficial:
               </p>
-              
+
               {isSubmitted ? (
                 <div className="text-center py-12 flex flex-col items-center animate-fade-in">
                   <div className="w-16 h-16 rounded-full bg-brand-green/20 flex items-center justify-center text-brand-green mb-6 scale-110">
@@ -1009,11 +1009,10 @@ export default function Home() {
                         placeholder="Ej. 12.345.678-9"
                         aria-invalid={rutError ? "true" : "false"}
                         aria-describedby={rutError ? "rut-error" : undefined}
-                        className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all text-sm bg-white ${
-                          rutError
+                        className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all text-sm bg-white ${rutError
                             ? "border-red-400 focus:ring-red-200 focus:border-red-500"
                             : "border-slate-300/80 focus:ring-brand-blue/35 focus:border-brand-blue"
-                        }`}
+                          }`}
                       />
                       {rutError && (
                         <p id="rut-error" role="alert" className="text-xs text-red-500 font-semibold mt-1.5 flex items-center gap-1 animate-fade-in">
@@ -1039,11 +1038,10 @@ export default function Home() {
                         placeholder="correo@ejemplo.cl"
                         aria-invalid={emailError ? "true" : "false"}
                         aria-describedby={emailError ? "email-error" : undefined}
-                        className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all text-sm bg-white ${
-                          emailError
+                        className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all text-sm bg-white ${emailError
                             ? "border-red-400 focus:ring-red-200 focus:border-red-500"
                             : "border-slate-300/80 focus:ring-brand-blue/35 focus:border-brand-blue"
-                        }`}
+                          }`}
                       />
                       {emailError && (
                         <p id="email-error" role="alert" className="text-xs text-red-500 font-semibold mt-1.5 flex items-center gap-1 animate-fade-in">
@@ -1094,11 +1092,10 @@ export default function Home() {
                   <button
                     type="submit"
                     disabled={!checkbox || !!rutError || !!emailError || !nombre || !rut || !email || !anio || isSubmitting}
-                    className={`w-full py-4 rounded-2xl text-base font-bold shadow-lg transition-all duration-300 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none ${
-                      checkbox && !rutError && !emailError && nombre && rut && email && anio && !isSubmitting
+                    className={`w-full py-4 rounded-2xl text-base font-bold shadow-lg transition-all duration-300 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none ${checkbox && !rutError && !emailError && nombre && rut && email && anio && !isSubmitting
                         ? "bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-green text-white hover:opacity-95 hover:scale-[1.01] cursor-pointer"
                         : "bg-slate-200 text-slate-400 cursor-not-allowed shadow-none"
-                    }`}
+                      }`}
                   >
                     {isSubmitting ? (
                       <>
@@ -1128,9 +1125,9 @@ export default function Home() {
                 {/* Main White Card */}
                 <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-2xl flex flex-col items-center text-center relative overflow-hidden">
                   <div className="absolute -top-12 -right-12 w-32 h-32 bg-slate-50 rounded-full blur-xl pointer-events-none" />
-                  
+
                   <Logo iconOnly className="scale-[1.8] mb-6 mt-2" />
-                  
+
                   <h3 className="font-extrabold text-xl text-brand-navy mb-2 leading-snug">
                     Conoce el estado de tu deuda FSCU
                   </h3>
@@ -1157,7 +1154,7 @@ export default function Home() {
                     <AlertTriangle className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" />
                     <span>Hoy es el CAE, mañana podría ser el FSCU.</span>
                   </div>
-                  
+
                   <div className="pt-2">
                     <Image
                       src="/img/gmecLOGO.jpeg"
@@ -1273,7 +1270,7 @@ export default function Home() {
 
       {/* JURISPRUDENCE DETAIL MODAL / DRAWER (WOW Premium Feature) */}
       {activeArticle && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in"
           onClick={() => setActiveArticle(null)}
         >
@@ -1313,7 +1310,7 @@ export default function Home() {
                 <span>&bull;</span>
                 <span>{activeArticle.readTime}</span>
               </div>
-              
+
               {activeArticle.content.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
