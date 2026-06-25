@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import {
   MessageSquare,
@@ -25,7 +25,6 @@ import {
   ClipboardCheck,
   Clock,
   Users,
-  Shield,
   AlertTriangle,
   Bell
 } from "lucide-react";
@@ -62,6 +61,77 @@ export default function Home() {
   
   // Active Modal Article
   const [activeArticle, setActiveArticle] = useState<Article | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (activeArticle) {
+      // Store current focus
+      previousFocusRef.current = document.activeElement as HTMLElement;
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setActiveArticle(null);
+          return;
+        }
+
+        if (e.key === "Tab" && modalRef.current) {
+          const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+          const focusableElements = Array.from(
+            modalRef.current.querySelectorAll<HTMLElement>(focusableSelectors)
+          );
+
+          if (focusableElements.length === 0) return;
+
+          const firstElement = focusableElements[0];
+          const lastElement = focusableElements[focusableElements.length - 1];
+
+          if (e.shiftKey) {
+            // Shift + Tab: if on the first element, wrap around to the last element
+            if (document.activeElement === firstElement) {
+              lastElement.focus();
+              e.preventDefault();
+            }
+          } else {
+            // Tab: if on the last element, wrap around to the first element
+            if (document.activeElement === lastElement) {
+              firstElement.focus();
+              e.preventDefault();
+            }
+          }
+        }
+      };
+
+      document.addEventListener("keydown", handleKeyDown);
+      
+      // Prevent body scrolling when modal is open
+      document.body.style.overflow = "hidden";
+
+      // Focus the first focusable element inside the modal
+      const timer = setTimeout(() => {
+        if (modalRef.current) {
+          const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+          const firstFocusable = modalRef.current.querySelector<HTMLElement>(focusableSelectors);
+          if (firstFocusable) {
+            firstFocusable.focus();
+          } else {
+            modalRef.current.focus();
+          }
+        }
+      }, 50);
+
+      return () => {
+        clearTimeout(timer);
+        document.removeEventListener("keydown", handleKeyDown);
+        document.body.style.overflow = "";
+        
+        // Restore focus
+        if (previousFocusRef.current) {
+          previousFocusRef.current.focus();
+        }
+      };
+    }
+  }, [activeArticle]);
 
   // Chilean RUT Validation & Formatting
   const validateRut = (rutStr: string): boolean => {
@@ -225,8 +295,142 @@ export default function Home() {
     }
   ];
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      // ── Organización ──────────────────────────────────────────────────────
+      {
+        '@type': 'LegalService',
+        '@id': 'https://nomasfscu.cl/#organization',
+        name: 'GMEC Abogados',
+        alternateName: 'No Más FSCU',
+        url: 'https://nomasfscu.cl/',
+        logo: 'https://nomasfscu.cl/img/gmecLOGO.jpeg',
+        description:
+          'Estudio jurídico especializado en defensa de deudores del Fondo Solidario de Crédito Universitario (FSCU) en Chile. Prescripción de deudas, defensa ante demandas y liberación de retenciones TGR.',
+        telephone: '+56963064291',
+        email: 'contacto@gmecspa.cl',
+        areaServed: {
+          '@type': 'Country',
+          name: 'Chile',
+        },
+        serviceType: [
+          'Prescripción de Deudas FSCU',
+          'Defensa ante Demandas Universitarias',
+          'Liberación Retención TGR',
+        ],
+        sameAs: [],
+      },
+
+      // ── WebSite con SearchAction ──────────────────────────────────────────
+      {
+        '@type': 'WebSite',
+        '@id': 'https://nomasfscu.cl/#website',
+        url: 'https://nomasfscu.cl/',
+        name: 'No Más FSCU — GMEC Abogados',
+        publisher: { '@id': 'https://nomasfscu.cl/#organization' },
+        inLanguage: 'es-CL',
+      },
+
+      // ── Blog con los 3 artículos dinámicos ───────────────────────────────
+      {
+        '@type': 'Blog',
+        '@id': 'https://nomasfscu.cl/#blog',
+        name: 'Educación Legal — GMEC Abogados',
+        description:
+          'Artículos especializados sobre el Fondo Solidario de Crédito Universitario: jurisprudencia, prescripción, cobranzas y defensa legal para deudores en Chile.',
+        url: 'https://nomasfscu.cl/#blog',
+        publisher: { '@id': 'https://nomasfscu.cl/#organization' },
+        inLanguage: 'es-CL',
+        blogPost: [
+          {
+            '@type': 'BlogPosting',
+            headline:
+              'Retención de la Tesorería (TGR) por Fondo Solidario: Mitos y Verdades',
+            description:
+              'La TGR retiene devoluciones de impuestos por deudas del FSCU, pero eso no significa que la deuda sea vigente ni que se hayan perdido defensas legales.',
+            datePublished: '2026-06-15',
+            dateModified: '2026-06-15',
+            url: 'https://nomasfscu.cl/#blog',
+            author: { '@id': 'https://nomasfscu.cl/#organization' },
+            publisher: { '@id': 'https://nomasfscu.cl/#organization' },
+            keywords: ['TGR', 'retención impuestos', 'FSCU', 'devolución renta'],
+            articleSection: 'TGR e Impuestos',
+            inLanguage: 'es-CL',
+          },
+          {
+            '@type': 'BlogPosting',
+            headline:
+              '¿Vendieron mi deuda del Fondo Solidario? Lo que debes saber antes de asumir que todo está perdido',
+            description:
+              'Las universidades pueden vender o ceder la administración de carteras de deudores a terceros. Eso no hace la deuda imprescriptible ni elimina las defensas.',
+            datePublished: '2026-05-28',
+            dateModified: '2026-05-28',
+            url: 'https://nomasfscu.cl/#blog',
+            author: { '@id': 'https://nomasfscu.cl/#organization' },
+            publisher: { '@id': 'https://nomasfscu.cl/#organization' },
+            keywords: ['cesión de deuda', 'cartera morosa', 'FSCU', 'prescripción'],
+            articleSection: 'Administración',
+            inLanguage: 'es-CL',
+          },
+          {
+            '@type': 'BlogPosting',
+            headline:
+              'Hoy es el CAE, mañana podría ser el FSCU: por qué las reglas del juego pueden volver a cambiar',
+            description:
+              'El CAE y el FSCU son sistemas distintos regulados por leyes diferentes, pero la historia muestra que las reglas cambian y conviene estar preparado.',
+            datePublished: '2026-05-12',
+            dateModified: '2026-05-12',
+            url: 'https://nomasfscu.cl/#blog',
+            author: { '@id': 'https://nomasfscu.cl/#organization' },
+            publisher: { '@id': 'https://nomasfscu.cl/#organization' },
+            keywords: ['CAE', 'FSCU', 'reforma educacional', 'legislación Chile'],
+            articleSection: 'Legislación',
+            inLanguage: 'es-CL',
+          },
+        ],
+      },
+
+      // ── FAQPage (bonus: mejora snippets en Google) ────────────────────────
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://nomasfscu.cl/#faq',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: '¿Cuándo prescribe una deuda del FSCU en Chile?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'En Chile, una deuda del Fondo Solidario de Crédito Universitario (FSCU) puede prescribir a los 5 años contados desde que la deuda se hizo exigible y no hubo actividad de cobro judicial formal. La fecha exacta depende del pagaré y el historial de cobranza de cada caso.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: '¿Puede la TGR retener mi devolución de impuestos por una deuda del FSCU?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Sí, la Tesorería General de la República (TGR) puede retener la devolución de la Operación Renta por deudas del FSCU. Sin embargo, esta retención no implica necesariamente que la deuda sea vigente o que no existan defensas legales disponibles. Es posible gestionar judicialmente su liberación o anulación.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: '¿Qué pasa si la universidad vendió mi deuda del FSCU a un tercero?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'La cesión o venta de una cartera de deudores del FSCU a terceros no elimina las defensas legales disponibles ni hace la deuda imprescriptible. El nuevo acreedor asume la deuda en las mismas condiciones jurídicas en que se encontraba.',
+            },
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* 1. SECCIÓN: INICIO (HERO SECTION) */}
       <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-md transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -234,15 +438,15 @@ export default function Home() {
           
           {/* Desktop Navigation Menu */}
           <nav className="hidden md:flex items-center gap-8 font-sans font-medium text-slate-600">
-            <a href="#inicio" className="hover:text-brand-navy transition-colors duration-200">Inicio</a>
-            <a href="#lo-que-hacemos" className="hover:text-brand-navy transition-colors duration-200">Lo que hacemos</a>
-            <a href="#blog" className="hover:text-brand-navy transition-colors duration-200">Educación Legal</a>
-            <a href="#contacto" className="hover:text-brand-navy transition-colors duration-200">Evaluación</a>
+            <a href="#inicio" className="hover:text-brand-navy transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none rounded-md px-1">Inicio</a>
+            <a href="#lo-que-hacemos" className="hover:text-brand-navy transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none rounded-md px-1">Lo que hacemos</a>
+            <a href="#blog" className="hover:text-brand-navy transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none rounded-md px-1">Educación Legal</a>
+            <a href="#contacto" className="hover:text-brand-navy transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none rounded-md px-1">Evaluación</a>
             <a
               href="https://wa.me/56963064291?text=Hola,%20necesito%20evaluar%20mi%20caso%20del%20Fondo%20Solidario."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan text-white text-sm font-semibold hover:shadow-lg hover:shadow-brand-blue/20 transition-all duration-200"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan text-white text-sm font-semibold hover:shadow-lg hover:shadow-brand-blue/20 focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none transition-all duration-200"
             >
               <MessageSquare className="w-4 h-4" />
               Contacto
@@ -252,8 +456,8 @@ export default function Home() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-slate-600 hover:text-brand-navy hover:bg-slate-100 transition-colors"
-            aria-label="Abrir menú"
+            className="md:hidden p-2 rounded-lg text-slate-600 hover:text-brand-navy hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none transition-colors"
+            aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -265,28 +469,28 @@ export default function Home() {
             <a
               href="#inicio"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-slate-700 hover:text-brand-navy py-2 font-medium text-lg border-b border-slate-100"
+              className="text-slate-700 hover:text-brand-navy py-2 font-medium text-lg border-b border-slate-100 focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none rounded-md px-1"
             >
               Inicio
             </a>
             <a
               href="#lo-que-hacemos"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-slate-700 hover:text-brand-navy py-2 font-medium text-lg border-b border-slate-100"
+              className="text-slate-700 hover:text-brand-navy py-2 font-medium text-lg border-b border-slate-100 focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none rounded-md px-1"
             >
               Lo que hacemos
             </a>
             <a
               href="#blog"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-slate-700 hover:text-brand-navy py-2 font-medium text-lg border-b border-slate-100"
+              className="text-slate-700 hover:text-brand-navy py-2 font-medium text-lg border-b border-slate-100 focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none rounded-md px-1"
             >
               Educación Legal
             </a>
             <a
               href="#contacto"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-slate-700 hover:text-brand-navy py-2 font-medium text-lg"
+              className="text-slate-700 hover:text-brand-navy py-2 font-medium text-lg focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none rounded-md px-1"
             >
               Evaluación Gratuita
             </a>
@@ -294,7 +498,7 @@ export default function Home() {
               href="https://wa.me/56963064291?text=Hola,%20necesito%20evaluar%20mi%20caso%20del%20Fondo%20Solidario."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-blue to-brand-cyan text-white text-base font-bold shadow-md"
+              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-blue to-brand-cyan text-white text-base font-bold shadow-md focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none"
             >
               <MessageSquare className="w-5 h-5" />
               Contacto
@@ -337,14 +541,14 @@ export default function Home() {
                   href="https://wa.me/56963064291?text=Hola,%20necesito%20evaluar%20mi%20caso%20del%20Fondo%20Solidario."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="animate-pulse-glow flex items-center justify-center gap-3 px-8 py-4.5 rounded-2xl bg-gradient-to-r from-brand-green to-brand-lime text-white text-base font-bold shadow-lg hover:shadow-brand-green/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                  className="animate-pulse-glow flex items-center justify-center gap-3 px-8 py-4.5 rounded-2xl bg-gradient-to-r from-brand-green to-brand-lime text-white text-base font-bold shadow-lg hover:shadow-brand-green/20 hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-brand-green/60 focus-visible:outline-none transition-all duration-300"
                 >
                   <MessageSquare className="w-5 h-5 fill-white/10" />
                   Contacto vía WhatsApp
                 </a>
                 <a
                   href="#contacto"
-                  className="flex items-center justify-center gap-2 px-8 py-4.5 rounded-2xl bg-white border border-slate-300/80 text-brand-navy text-base font-bold hover:bg-slate-100 active:scale-[0.98] transition-all duration-300"
+                  className="flex items-center justify-center gap-2 px-8 py-4.5 rounded-2xl bg-white border border-slate-300/80 text-brand-navy text-base font-bold hover:bg-slate-100 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none transition-all duration-300"
                 >
                   Evaluación Preliminar
                   <ArrowRight className="w-4 h-4" />
@@ -730,7 +934,8 @@ export default function Home() {
                 
                 <button
                   onClick={() => setActiveArticle(article)}
-                  className="inline-flex items-center gap-2 text-brand-cyan font-bold text-sm hover:text-brand-lime transition-all duration-200 cursor-pointer self-start group/btn"
+                  aria-haspopup="dialog"
+                  className="inline-flex items-center gap-2 text-brand-cyan font-bold text-sm hover:text-brand-lime transition-all duration-200 cursor-pointer self-start group/btn focus-visible:ring-2 focus-visible:ring-brand-cyan/60 focus-visible:outline-none rounded-md px-1"
                 >
                   Leer artículo de jurisprudencia
                   <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform" />
@@ -802,6 +1007,8 @@ export default function Home() {
                         value={rut}
                         onChange={handleRutChange}
                         placeholder="Ej. 12.345.678-9"
+                        aria-invalid={rutError ? "true" : "false"}
+                        aria-describedby={rutError ? "rut-error" : undefined}
                         className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all text-sm bg-white ${
                           rutError
                             ? "border-red-400 focus:ring-red-200 focus:border-red-500"
@@ -809,7 +1016,7 @@ export default function Home() {
                         }`}
                       />
                       {rutError && (
-                        <p className="text-xs text-red-500 font-semibold mt-1.5 flex items-center gap-1 animate-fade-in">
+                        <p id="rut-error" role="alert" className="text-xs text-red-500 font-semibold mt-1.5 flex items-center gap-1 animate-fade-in">
                           <AlertCircle className="w-3.5 h-3.5" />
                           {rutError}
                         </p>
@@ -830,6 +1037,8 @@ export default function Home() {
                         value={email}
                         onChange={handleEmailChange}
                         placeholder="correo@ejemplo.cl"
+                        aria-invalid={emailError ? "true" : "false"}
+                        aria-describedby={emailError ? "email-error" : undefined}
                         className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all text-sm bg-white ${
                           emailError
                             ? "border-red-400 focus:ring-red-200 focus:border-red-500"
@@ -837,7 +1046,7 @@ export default function Home() {
                         }`}
                       />
                       {emailError && (
-                        <p className="text-xs text-red-500 font-semibold mt-1.5 flex items-center gap-1 animate-fade-in">
+                        <p id="email-error" role="alert" className="text-xs text-red-500 font-semibold mt-1.5 flex items-center gap-1 animate-fade-in">
                           <AlertCircle className="w-3.5 h-3.5" />
                           {emailError}
                         </p>
@@ -885,7 +1094,7 @@ export default function Home() {
                   <button
                     type="submit"
                     disabled={!checkbox || !!rutError || !!emailError || !nombre || !rut || !email || !anio || isSubmitting}
-                    className={`w-full py-4 rounded-2xl text-base font-bold shadow-lg transition-all duration-300 flex items-center justify-center gap-2 ${
+                    className={`w-full py-4 rounded-2xl text-base font-bold shadow-lg transition-all duration-300 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-brand-blue/60 focus-visible:outline-none ${
                       checkbox && !rutError && !emailError && nombre && rut && email && anio && !isSubmitting
                         ? "bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-green text-white hover:opacity-95 hover:scale-[1.01] cursor-pointer"
                         : "bg-slate-200 text-slate-400 cursor-not-allowed shadow-none"
@@ -1064,9 +1273,17 @@ export default function Home() {
 
       {/* JURISPRUDENCE DETAIL MODAL / DRAWER (WOW Premium Feature) */}
       {activeArticle && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in"
+          onClick={() => setActiveArticle(null)}
+        >
           <div
-            className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl border border-slate-100 flex flex-col max-h-[85vh] overflow-hidden"
+            ref={modalRef}
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
+            className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl border border-slate-100 flex flex-col max-h-[85vh] overflow-hidden focus:outline-none"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -1075,13 +1292,13 @@ export default function Home() {
                 <span className="text-brand-blue text-xs font-extrabold uppercase tracking-wider">
                   Jurisprudencia &bull; {activeArticle.category}
                 </span>
-                <h3 className="text-xl md:text-2xl font-black text-brand-navy mt-1 leading-tight">
+                <h3 id="modal-title" className="text-xl md:text-2xl font-black text-brand-navy mt-1 leading-tight">
                   {activeArticle.title}
                 </h3>
               </div>
               <button
                 onClick={() => setActiveArticle(null)}
-                className="p-2 rounded-full text-slate-400 hover:text-brand-navy hover:bg-slate-100 transition-colors flex-shrink-0 ml-4 cursor-pointer"
+                className="p-2 rounded-full text-slate-400 hover:text-brand-navy hover:bg-slate-100 transition-colors flex-shrink-0 ml-4 cursor-pointer focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none"
                 aria-label="Cerrar artículo"
               >
                 <X className="w-6 h-6" />
@@ -1116,7 +1333,7 @@ export default function Home() {
                     )}%20y%20quiero%20evaluar%20mi%20caso.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-green to-brand-lime text-white text-xs md:text-sm font-bold shadow-md hover:opacity-95"
+                    className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-green to-brand-lime text-white text-xs md:text-sm font-bold shadow-md hover:opacity-95 focus-visible:ring-2 focus-visible:ring-brand-green/60 focus-visible:outline-none"
                   >
                     <MessageSquare className="w-4 h-4" />
                     Consultar por WhatsApp
@@ -1130,7 +1347,7 @@ export default function Home() {
                         contactSec.scrollIntoView({ behavior: "smooth" });
                       }
                     }}
-                    className="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 text-xs md:text-sm font-bold hover:bg-slate-100"
+                    className="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 text-xs md:text-sm font-bold hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none"
                   >
                     Ir al Formulario de Evaluación
                   </button>
