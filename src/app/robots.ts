@@ -8,23 +8,11 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: ['/api/', '/_next/', '/admin/'],
       },
-      // Permitir explícitamente rastreadores de IA conocidos
-      {
-        userAgent: 'GPTBot',
-        allow: '/',
-      },
-      {
-        userAgent: 'Claude-Web',
-        allow: '/',
-      },
-      {
-        userAgent: 'PerplexityBot',
-        allow: '/',
-      },
-      {
-        userAgent: 'Googlebot',
-        allow: '/',
-      },
+      { userAgent: 'GPTBot', allow: '/' },
+      { userAgent: 'Claude-Web', allow: '/' },
+      { userAgent: 'PerplexityBot', allow: '/' },
+      { userAgent: 'Googlebot', allow: '/' },
+      { userAgent: 'Bingbot', allow: '/' },
     ],
     sitemap: 'https://nomasfscu.cl/sitemap.xml',
     host: 'https://nomasfscu.cl',

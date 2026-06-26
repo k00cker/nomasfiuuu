@@ -298,41 +298,96 @@ export default function Home() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
-      // ── Organización ──────────────────────────────────────────────────────
+  
+      // 1. ORGANIZACIÓN (Negocio legal — aumenta confianza E-E-A-T de Google)
       {
         '@type': 'LegalService',
         '@id': 'https://nomasfscu.cl/#organization',
         name: 'GMEC Abogados',
-        alternateName: 'No Más FSCU',
+        alternateName: ['No Más FSCU', 'nomasfscu.cl', 'GMEC SpA'],
         url: 'https://nomasfscu.cl/',
-        logo: 'https://nomasfscu.cl/img/gmecLOGO.jpeg',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://nomasfscu.cl/img/gmecLOGO.jpeg',
+        },
         description:
-          'Estudio jurídico especializado en defensa de deudores del Fondo Solidario de Crédito Universitario (FSCU) en Chile. Prescripción de deudas, defensa ante demandas y liberación de retenciones TGR.',
+          'Estudio jurídico especializado en defensa de deudores del Fondo Solidario de Crédito Universitario (FSCU) en Chile. Servicios: prescripción de deudas, defensa ante demandas judiciales y liberación de retenciones TGR.',
         telephone: '+56963064291',
         email: 'contacto@gmecspa.cl',
         areaServed: {
           '@type': 'Country',
           name: 'Chile',
+          sameAs: 'https://www.wikidata.org/wiki/Q298',
         },
         serviceType: [
           'Prescripción de Deudas FSCU',
           'Defensa ante Demandas Universitarias',
-          'Liberación Retención TGR',
+          'Liberación de Retención TGR',
+          'Defensa Legal Deudores Chile',
         ],
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Servicios GMEC Abogados',
+          itemListElement: [
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'LegalService',
+                name: 'Prescripción de Deudas FSCU',
+                description:
+                  'Evaluación del pagaré y demanda de prescripción civil para extinguir definitivamente la deuda del Fondo Solidario tras 5 años de inactividad de cobro judicial.',
+              },
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'LegalService',
+                name: 'Defensa ante Demandas Judiciales FSCU',
+                description:
+                  'Interposición inmediata de defensas legales (excepciones), freno de embargos y resguardo del patrimonio ante notificaciones judiciales de cobro del Fondo Solidario.',
+              },
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'LegalService',
+                name: 'Liberación Retención TGR',
+                description:
+                  'Análisis de la procedencia legal de la retención de devolución de impuestos (Operación Renta) por parte de la Tesorería General de la República y gestión judicial de su liberación.',
+              },
+            },
+          ],
+        },
         sameAs: [],
       },
-
-      // ── WebSite con SearchAction ──────────────────────────────────────────
+  
+      // 2. WEBSITE
       {
         '@type': 'WebSite',
         '@id': 'https://nomasfscu.cl/#website',
         url: 'https://nomasfscu.cl/',
         name: 'No Más FSCU — GMEC Abogados',
+        description:
+          'Plataforma de defensa legal especializada en deudas del Fondo Solidario de Crédito Universitario en Chile.',
         publisher: { '@id': 'https://nomasfscu.cl/#organization' },
         inLanguage: 'es-CL',
       },
-
-      // ── Blog con los 3 artículos dinámicos ───────────────────────────────
+  
+      // 3. WEBPAGE PRINCIPAL
+      {
+        '@type': 'WebPage',
+        '@id': 'https://nomasfscu.cl/#webpage',
+        url: 'https://nomasfscu.cl/',
+        name: 'No Más FSCU | Abogados Especialistas en Deuda Fondo Solidario Chile',
+        description:
+          'Evaluamos la prescripción de tu deuda del Fondo Solidario a los 5 años y te defendemos ante cobranzas judiciales en todo Chile de forma 100% remota.',
+        isPartOf: { '@id': 'https://nomasfscu.cl/#website' },
+        about: { '@id': 'https://nomasfscu.cl/#organization' },
+        inLanguage: 'es-CL',
+      },
+  
+      // 4. BLOG + ARTÍCULOS INDIVIDUALES
+      // (Permite que Google indexe los artículos como resultados individuales)
       {
         '@type': 'Blog',
         '@id': 'https://nomasfscu.cl/#blog',
@@ -345,8 +400,8 @@ export default function Home() {
         blogPost: [
           {
             '@type': 'BlogPosting',
-            headline:
-              'Retención de la Tesorería (TGR) por Fondo Solidario: Mitos y Verdades',
+            '@id': 'https://nomasfscu.cl/#article-tgr',
+            headline: 'Retención de la Tesorería (TGR) por Fondo Solidario: Mitos y Verdades',
             description:
               'La TGR retiene devoluciones de impuestos por deudas del FSCU, pero eso no significa que la deuda sea vigente ni que se hayan perdido defensas legales.',
             datePublished: '2026-06-15',
@@ -354,14 +409,18 @@ export default function Home() {
             url: 'https://nomasfscu.cl/#blog',
             author: { '@id': 'https://nomasfscu.cl/#organization' },
             publisher: { '@id': 'https://nomasfscu.cl/#organization' },
-            keywords: ['TGR', 'retención impuestos', 'FSCU', 'devolución renta'],
+            keywords: ['retención TGR', 'devolución impuestos FSCU', 'Operación Renta', 'Fondo Solidario'],
             articleSection: 'TGR e Impuestos',
+            about: {
+              '@type': 'Thing',
+              name: 'Retención TGR por deuda FSCU',
+            },
             inLanguage: 'es-CL',
           },
           {
             '@type': 'BlogPosting',
-            headline:
-              '¿Vendieron mi deuda del Fondo Solidario? Lo que debes saber antes de asumir que todo está perdido',
+            '@id': 'https://nomasfscu.cl/#article-cesion',
+            headline: '¿Vendieron mi deuda del Fondo Solidario? Lo que debes saber antes de asumir que todo está perdido',
             description:
               'Las universidades pueden vender o ceder la administración de carteras de deudores a terceros. Eso no hace la deuda imprescriptible ni elimina las defensas.',
             datePublished: '2026-05-28',
@@ -369,14 +428,18 @@ export default function Home() {
             url: 'https://nomasfscu.cl/#blog',
             author: { '@id': 'https://nomasfscu.cl/#organization' },
             publisher: { '@id': 'https://nomasfscu.cl/#organization' },
-            keywords: ['cesión de deuda', 'cartera morosa', 'FSCU', 'prescripción'],
+            keywords: ['cesión deuda FSCU', 'cartera morosa fondo solidario', 'prescripción', 'defensa legal'],
             articleSection: 'Administración',
+            about: {
+              '@type': 'Thing',
+              name: 'Cesión de cartera de deuda FSCU',
+            },
             inLanguage: 'es-CL',
           },
           {
             '@type': 'BlogPosting',
-            headline:
-              'Hoy es el CAE, mañana podría ser el FSCU: por qué las reglas del juego pueden volver a cambiar',
+            '@id': 'https://nomasfscu.cl/#article-cae',
+            headline: 'Hoy es el CAE, mañana podría ser el FSCU: por qué las reglas del juego pueden volver a cambiar',
             description:
               'El CAE y el FSCU son sistemas distintos regulados por leyes diferentes, pero la historia muestra que las reglas cambian y conviene estar preparado.',
             datePublished: '2026-05-12',
@@ -384,24 +447,37 @@ export default function Home() {
             url: 'https://nomasfscu.cl/#blog',
             author: { '@id': 'https://nomasfscu.cl/#organization' },
             publisher: { '@id': 'https://nomasfscu.cl/#organization' },
-            keywords: ['CAE', 'FSCU', 'reforma educacional', 'legislación Chile'],
+            keywords: ['CAE FSCU diferencias', 'reforma educacional Chile', 'legislación crédito universitario'],
             articleSection: 'Legislación',
+            about: {
+              '@type': 'Thing',
+              name: 'Comparación CAE y FSCU en Chile',
+            },
             inLanguage: 'es-CL',
           },
         ],
       },
-
-      // ── FAQPage (bonus: mejora snippets en Google) ────────────────────────
+  
+      // 5. FAQ PAGE ── impacto visual alto: genera rich snippets en Google
+      // Basado en las búsquedas reales más frecuentes detectadas en el mercado
       {
         '@type': 'FAQPage',
         '@id': 'https://nomasfscu.cl/#faq',
         mainEntity: [
           {
             '@type': 'Question',
-            name: '¿Cuándo prescribe una deuda del FSCU en Chile?',
+            name: '¿Cuándo prescribe una deuda del Fondo Solidario (FSCU) en Chile?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'En Chile, una deuda del Fondo Solidario de Crédito Universitario (FSCU) puede prescribir a los 5 años contados desde que la deuda se hizo exigible y no hubo actividad de cobro judicial formal. La fecha exacta depende del pagaré y el historial de cobranza de cada caso.',
+              text: 'Una deuda del Fondo Solidario de Crédito Universitario puede prescribir a los 5 años contados desde que la deuda fue exigible y no hubo cobro judicial activo. La prescripción no opera automáticamente: debe ser alegada ante el tribunal mediante una excepción de prescripción extintiva (Art. 2493 del Código Civil). La fecha exacta depende del pagaré y el historial de cobranza de cada caso.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: '¿Qué pasa si no pago el Fondo Solidario?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Si no pagas el FSCU, la universidad puede: (1) publicar tu nombre en la nómina de deudores morosos para que la TGR retenga tu devolución de impuestos, (2) iniciar cobranza prejudicial ofreciendo facilidades de pago, y (3) presentar una demanda ejecutiva civil usando el pagaré como título ejecutivo, lo que puede derivar en embargo. La deuda del FSCU no se reporta a DICOM. En cada etapa existen defensas legales disponibles.',
             },
           },
           {
@@ -409,19 +485,36 @@ export default function Home() {
             name: '¿Puede la TGR retener mi devolución de impuestos por una deuda del FSCU?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Sí, la Tesorería General de la República (TGR) puede retener la devolución de la Operación Renta por deudas del FSCU. Sin embargo, esta retención no implica necesariamente que la deuda sea vigente o que no existan defensas legales disponibles. Es posible gestionar judicialmente su liberación o anulación.',
+              text: 'Sí. Entre el 1 y 15 de febrero de cada año, las administraciones del FSCU publican la nómina de deudores morosos y la Tesorería General de la República (TGR) puede retener la devolución de la Operación Renta. Esta retención no implica que la deuda sea jurídicamente vigente ni que se hayan perdido defensas legales. Es posible gestionar judicialmente su liberación o anulación.',
             },
           },
           {
             '@type': 'Question',
-            name: '¿Qué pasa si la universidad vendió mi deuda del FSCU a un tercero?',
+            name: '¿Si vendieron mi deuda del Fondo Solidario a un tercero puedo seguir defendiéndome?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'La cesión o venta de una cartera de deudores del FSCU a terceros no elimina las defensas legales disponibles ni hace la deuda imprescriptible. El nuevo acreedor asume la deuda en las mismas condiciones jurídicas en que se encontraba.',
+              text: 'Sí. La cesión o venta de una cartera de deudores del FSCU a terceros no elimina las defensas legales disponibles ni hace la deuda imprescriptible. El nuevo acreedor asume la deuda en las mismas condiciones jurídicas en que se encontraba al momento de la cesión.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: '¿El FSCU y el CAE son lo mismo?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'No. Son sistemas completamente distintos. El FSCU (Ley N° 19.287) es administrado por cada universidad CRUCH, no tiene relación con DICOM y sus deudores aparecen en nóminas públicas. El CAE opera con garantía estatal y los bancos. Tienen reglas de cobranza, plazos y mecanismos de defensa distintos.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: '¿Atienden en regiones fuera de Santiago?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Sí. GMEC Abogados opera 100% de forma remota con cobertura en todas las regiones de Chile. No es necesaria ninguna visita presencial.',
             },
           },
         ],
       },
+  
     ],
   };
 

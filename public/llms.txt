@@ -2,60 +2,64 @@
 
 > Estudio jurídico especializado en defensa de deudores del Fondo Solidario de Crédito Universitario (FSCU) en Chile. Atención 100% remota en todas las regiones del país.
 
-## Información General
+**URL:** https://nomasfscu.cl/
+**Contacto:** contacto@gmecspa.cl | +56 9 6306 4291
+**WhatsApp:** https://wa.me/56963064291
 
-- **Sitio web:** https://nomasfscu.cl/
-- **Empresa:** GMEC Abogados (GMEC SpA)
-- **Contacto:** contacto@gmecspa.cl
-- **Teléfono/WhatsApp:** +56 9 6306 4291
-- **Cobertura:** Nacional — todas las regiones de Chile
-- **Modalidad:** 100% remota, sin necesidad de presencia física
+## ¿Qué es el FSCU?
 
-## Servicios Principales
+El Fondo Solidario de Crédito Universitario (FSCU) es un crédito estatal creado por la Ley N° 19.287 de 1994, administrado por cada universidad perteneciente al Consejo de Rectores (CRUCH). Se diferencia del CAE (Crédito con Aval del Estado) en que no interviene ningún banco ni aparece en DICOM/Boletín Comercial. Las deudas se denominan en UTM con una tasa de interés anual del 2%. En Chile existen más de 367.000 deudores morosos del FSCU registrados públicamente a 2026.
 
-### 1. Prescripción de Deudas FSCU
-La ley chilena permite la extinción de deudas si transcurren 5 años de inactividad de cobro judicial formal. GMEC Abogados evalúa el pagaré del cliente y demanda la prescripción civil para eliminar definitivamente la deuda del historial del deudor.
+## Servicios de GMEC Abogados
 
-### 2. Defensa ante Demandas Judiciales
-Ante notificaciones de cobro judicial, GMEC actúa de forma inmediata para interponer defensas legales (excepciones), frenar embargos de bienes y proteger el patrimonio del deudor. Los plazos legales en Chile son estrictos.
+### Prescripción de Deudas FSCU
+Según el artículo 2492 del Código Civil chileno, una deuda del FSCU puede prescribir si transcurren 5 años desde que la obligación fue exigible y no hubo cobro judicial activo. La prescripción NO opera automáticamente: debe ser alegada expresamente ante el tribunal (Art. 2493 CC). GMEC evalúa el pagaré original y gestiona la demanda de prescripción civil para extinguir definitivamente la deuda.
 
-### 3. Liberación de Retención de Impuestos TGR
-La Tesorería General de la República (TGR) puede retener anualmente la devolución de renta (Operación Renta) de deudores del FSCU. GMEC analiza la procedencia legal de la retención y gestiona judicialmente su liberación o anulación.
+### Defensa ante Demandas Judiciales
+Si la universidad ha presentado una demanda ejecutiva civil usando el pagaré como título ejecutivo, existen plazos muy estrictos en Chile para interponer defensas legales (excepciones). GMEC actúa de forma inmediata para frenar embargos de bienes y resguardar el patrimonio del deudor.
 
-## Contexto Legal Relevante
+### Liberación de Retención TGR
+Entre el 1 y 15 de febrero de cada año, las administraciones del FSCU publican las nóminas de deudores morosos sujetos a retención de devolución de impuestos. La TGR puede retener la devolución de la Operación Renta. GMEC analiza la procedencia legal de la retención y gestiona judicialmente su liberación o anulación.
 
-- **Fondo Solidario de Crédito Universitario (FSCU):** Programa estatal de financiamiento de educación superior en Chile, distinto del CAE (Crédito con Aval del Estado). Regulado por la Ley N° 19.287 y sus modificaciones.
-- **Prescripción civil:** Según el Código Civil chileno, las deudas pueden prescribir a los 5 años desde que la obligación se hizo exigible, si no hubo cobro judicial activo en ese período.
-- **TGR y retención:** La Tesorería General puede retener devoluciones tributarias de deudores morosos del FSCU. Esta retención no es definitiva y puede ser impugnada.
+## Consecuencias de no pagar el FSCU
 
-## Artículos de Educación Legal (Blog)
-
-1. **Retención de la Tesorería (TGR) por Fondo Solidario: Mitos y Verdades** (15 jun 2026)
-   La TGR retiene devoluciones de impuestos por deudas del FSCU, pero eso no significa que la deuda sea vigente ni que se hayan perdido defensas legales.
-
-2. **¿Vendieron mi deuda del Fondo Solidario? Lo que debes saber antes de asumir que todo está perdido** (28 may 2026)
-   Las universidades pueden vender o ceder la administración de carteras de deudores a terceros. Eso no hace la deuda imprescriptible ni elimina las defensas legales disponibles.
-
-3. **Hoy es el CAE, mañana podría ser el FSCU: por qué las reglas del juego pueden volver a cambiar** (12 may 2026)
-   El CAE y el FSCU son sistemas distintos regulados por leyes diferentes, pero la historia legislativa muestra que las reglas cambian y conviene estar preparado.
+1. **Retención TGR**: La universidad notifica a la TGR, que puede retener la devolución de impuestos anuales.
+2. **Cobranza prejudicial**: La institución ofrece facilidades de pago antes de demandar.
+3. **Demanda ejecutiva civil**: El pagaré firmado actúa como título ejecutivo. El tribunal puede decretar embargo.
+4. **Nota importante**: La deuda del FSCU NO aparece en DICOM ni afecta el historial crediticio bancario.
 
 ## Preguntas Frecuentes
 
-**¿Cuándo prescribe una deuda del FSCU?**
-A los 5 años desde que la deuda fue exigible y no hubo cobro judicial activo. La fecha exacta depende del pagaré y el historial de cada caso.
+**¿Cuándo prescribe la deuda del FSCU?** A los 5 años desde que la obligación fue exigible y no hubo cobro judicial activo. Debe alegarse expresamente ante el tribunal.
 
-**¿La retención TGR implica que la deuda es válida?**
-No necesariamente. La retención es un mecanismo administrativo; no valida jurídicamente la deuda ni extingue las defensas disponibles.
+**¿La retención TGR significa que la deuda es válida?** No necesariamente. La retención es un mecanismo administrativo previo. No valida jurídicamente la deuda ni extingue las defensas disponibles.
 
-**¿Si vendieron mi deuda FSCU puedo seguir defendiéndome?**
-Si. La cesión de cartera no elimina defensas legales ni hace la deuda imprescriptible.
+**¿Si vendieron mi deuda FSCU puedo defenderme?** Sí. La cesión de cartera no hace la deuda imprescriptible ni elimina las defensas legales. El nuevo acreedor asume la deuda en las mismas condiciones.
 
-**¿Atienden fuera de Santiago?**
-Sí. La atención es 100% remota con cobertura en todas las regiones de Chile.
+**¿El FSCU y el CAE son lo mismo?** No. Son sistemas distintos con reglas de cobranza, plazos y defensas diferentes. El FSCU no opera a través de bancos.
+
+**¿Atienden en regiones fuera de Santiago?** Sí. Atención 100% remota en todas las regiones de Chile.
+
+## Artículos de Educación Legal
+
+1. **Retención de la Tesorería (TGR) por Fondo Solidario: Mitos y Verdades** (15 jun 2026) — La retención TGR no implica que la deuda sea jurídicamente vigente ni que no existan defensas disponibles.
+
+2. **¿Vendieron mi deuda del Fondo Solidario? Lo que debes saber** (28 may 2026) — La cesión de cartera a terceros no elimina las defensas legales ni hace la deuda imprescriptible.
+
+3. **Hoy es el CAE, mañana podría ser el FSCU** (12 may 2026) — El CAE y el FSCU son sistemas distintos. La historia legislativa chilena muestra que las reglas cambian.
+
+## Marco Legal Relevante
+
+- Ley N° 19.287 (1994): Crea el Fondo Solidario de Crédito Universitario
+- Artículo 2492 Código Civil: Prescripción extintiva de obligaciones
+- Artículo 2493 Código Civil: La prescripción debe ser alegada
+- Decreto 297 (2009): Regula el proceso de retención TGR por deuda FSCU
+- Ley N° 19.848: Reprogramación de deudas de Fondos de Crédito Solidario
 
 ## Aviso Legal
 
-El uso de este sitio y el envío de formularios constituyen una solicitud informativa preliminar. No configuran mandato judicial ni contrato de servicios hasta la firma del documento correspondiente. GMEC Abogados opera con absoluto secreto profesional y apego a la normativa del Colegio de Abogados de Chile.
+El uso de este sitio y el envío de formularios constituyen una solicitud informativa preliminar. No configuran mandato judicial ni contrato de prestación de servicios hasta la firma del documento correspondiente. GMEC Abogados opera con absoluto secreto profesional y apego a la normativa del Colegio de Abogados de Chile.
 
 ---
 *Sitio desarrollado por ElquiCode Studio — www.elquicode.cl*
+*Última actualización: Junio 2026*

@@ -18,32 +18,41 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  // ── Básico ──────────────────────────────────────────────────────────────
+  // ── Básico ────────────────────────────────────────────────────────────────
   metadataBase: new URL('https://nomasfscu.cl'),
   title: {
-    default: 'No Más FSCU | Defensa Legal Especializada — GMEC Abogados',
-    template: '%s | GMEC Abogados',
+    default: 'No Más FSCU | Abogados Especialistas en Deuda Fondo Solidario Chile',
+    template: '%s | GMEC Abogados — nomasfscu.cl',
   },
   description:
-    'Evaluamos la prescripción de tu deuda del Fondo Solidario a los 5 años y te defendemos ante cobranzas judiciales en todo Chile de forma 100% remota.',
+    'Abogados especialistas en prescripción de deudas del Fondo Solidario (FSCU) y defensa ante cobranzas judiciales. Evaluamos tu caso gratis. Atención 100% remota en todo Chile.',
   keywords: [
-    'FSCU',
-    'Fondo Solidario de Crédito Universitario',
-    'prescripción deuda FSCU',
+    // Keywords primarias (alta intención transaccional)
+    'abogados deuda FSCU Chile',
+    'prescripción deuda fondo solidario',
+    'defensa legal fondo solidario',
     'GMEC Abogados',
-    'defensa legal Chile',
-    'retención impuestos TGR',
-    'demanda Fondo Solidario',
-    'prescripción 5 años',
-    'abogados deuda universitaria',
-    'cobranza FSCU Chile',
+    // Keywords secundarias (informacionales de alta urgencia)
+    'qué pasa si no pago el fondo solidario',
+    'retención TGR fondo solidario',
+    'retención impuestos fondo solidario',
+    'vendieron mi deuda fondo solidario',
+    // Long-tail de alta conversión
+    'prescripción 5 años deuda universitaria Chile',
+    'abogados deuda universitaria remoto Chile',
+    'defensa ante demanda fondo solidario',
+    'liberación retención TGR abogados',
+    // Branding y dominio
+    'no más FSCU',
+    'nomasfscu',
+    'FSCU Fondo Solidario Crédito Universitario',
   ],
   authors: [{ name: 'GMEC Abogados', url: 'https://nomasfscu.cl' }],
   creator: 'GMEC Abogados',
   publisher: 'GMEC Abogados',
-  category: 'Servicios Legales',
+  category: 'Servicios Legales — Defensa de Deudores',
 
-  // ── Canónica e Indexación ────────────────────────────────────────────────
+  // ── Canónica e Indexación ──────────────────────────────────────────────────
   alternates: {
     canonical: 'https://nomasfscu.cl/',
   },
@@ -59,34 +68,40 @@ export const metadata: Metadata = {
     },
   },
 
-  // ── Open Graph ───────────────────────────────────────────────────────────
+  // ── Open Graph ─────────────────────────────────────────────────────────────
   openGraph: {
     type: 'website',
     locale: 'es_CL',
     url: 'https://nomasfscu.cl/',
     siteName: 'No Más FSCU — GMEC Abogados',
-    title: '¿Te siguen cobrando el FSCU? Evalúa tu caso gratis',
+    title: '¿Te cobran el FSCU o te retuyeron la devolución? Evalúa tu caso gratis',
     description:
-      'Defensa legal especializada para deudores del Fondo Solidario. Prescripción a los 5 años, defensa ante demandas y liberación de retenciones TGR. Cobertura nacional, 100% remoto.',
+      'Somos abogados especializados en deudas del Fondo Solidario Universitario. Analizamos prescripción, demandas y retenciones TGR. Cobertura nacional, atención 100% remota.',
     images: [
       {
         url: '/img/og-nomasfscu.jpg',
         width: 1200,
         height: 630,
         alt: 'No Más FSCU — GMEC Abogados: Defensa Legal Especializada en Chile',
+        type: 'image/jpeg',
       },
     ],
   },
 
-  // ── Twitter / X Cards ────────────────────────────────────────────────────
+  // ── Twitter / X Cards ──────────────────────────────────────────────────────
   twitter: {
     card: 'summary_large_image',
-    title: '¿Te siguen cobrando el FSCU? Conoce tus derechos',
+    title: '¿Deuda del Fondo Solidario? Conoce tus derechos legales',
     description:
-      'Evaluamos la prescripción de tu deuda universitaria. Defensa ante cobranzas y retenciones TGR en todo Chile. Atención 100% remota — GMEC Abogados.',
+      'Prescripción a los 5 años, defensa ante demandas y liberación de retenciones TGR. Abogados especializados en FSCU — atención 100% remota en Chile.',
     images: ['/img/og-nomasfscu.jpg'],
     creator: '@GMECAbogados',
   },
+
+  // ── Verificación GSC (activar cuando esté disponible el token) ─────────────
+  // verification: {
+  //   google: 'PEGAR_TOKEN_GOOGLE_SEARCH_CONSOLE',
+  // },
 };
 
 export default function RootLayout({
