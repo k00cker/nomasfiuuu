@@ -98,10 +98,10 @@ export const metadata: Metadata = {
     creator: '@GMECAbogados',
   },
 
-  // ── Verificación GSC (activar cuando esté disponible el token) ─────────────
-  // verification: {
-  //   google: 'PEGAR_TOKEN_GOOGLE_SEARCH_CONSOLE',
-  // },
+  // ── Verificación GSC ───────────────────────────────────────────────────────
+  verification: {
+    google: 'google6296d8fd227d680e',
+  },
 };
 
 export default function RootLayout({
